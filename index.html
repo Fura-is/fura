@@ -226,37 +226,24 @@
 
     /* Right cluster + language switch */
     .nav-right { display: flex; align-items: center; gap: 1.5rem; }
-    .lang-switch { display: flex; gap: 4px; flex-shrink: 0; }
-    .lang-btn {
+    /* Compact IS / EN text toggle */
+    .lang-switch { display: inline-flex; align-items: center; gap: 3px; flex-shrink: 0; }
+    .lang-opt {
       background: transparent;
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 6px;
-      padding: 3px 7px;
-      font-size: 1.05rem;
+      border: none;
+      color: rgba(255,255,255,0.45);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
       line-height: 1;
+      padding: 4px 2px;
       cursor: pointer;
-      opacity: 0.45;
-      transition: opacity 0.2s, border-color 0.2s, background 0.2s;
+      transition: color 0.2s;
     }
-    .lang-btn:hover { opacity: 1; }
-    .lang-btn.active {
-      opacity: 1;
-      border-color: rgba(255,255,255,0.55);
-      background: rgba(255,255,255,0.12);
-    }
-    .lang-switch .lang-btn { display: flex; align-items: center; padding: 4px 5px; }
-    .lang-flag { height: 16px; width: auto; display: block; border-radius: 2px; }
-    /* Language dropdown */
-    .lang-switch { position: relative; }
-    .lang-current { display: flex; align-items: center; gap: 5px; background: transparent; border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 4px 7px; cursor: pointer; }
-    .lang-current:hover { border-color: rgba(255,255,255,0.5); }
-    .lang-caret { color: #fff; font-size: 0.6rem; line-height: 1; opacity: 0.75; transition: transform 0.2s; }
-    .lang-current[aria-expanded="true"] .lang-caret { transform: rotate(180deg); }
-    .lang-menu { position: absolute; top: calc(100% + 6px); right: 0; background: rgba(20,16,13,0.98); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 4px; display: none; flex-direction: column; gap: 2px; min-width: 150px; z-index: 200; box-shadow: 0 10px 28px rgba(0,0,0,0.35); }
-    .lang-menu.open { display: flex; }
-    .lang-option { display: flex; align-items: center; gap: 9px; background: transparent; border: none; color: rgba(255,255,255,0.8); font-family: inherit; font-size: 0.9rem; font-weight: 500; padding: 7px 9px; border-radius: 5px; cursor: pointer; width: 100%; text-align: left; }
-    .lang-option:hover { background: rgba(255,255,255,0.1); color: #fff; }
-    .lang-option.active { color: #fff; }
+    .lang-opt:hover { color: rgba(255,255,255,0.85); }
+    .lang-opt.active { color: #fff; }
+    .lang-sep { color: rgba(255,255,255,0.3); font-size: 0.85rem; line-height: 1; }
 
     /* Hamburger */
     .nav-burger {
@@ -552,8 +539,8 @@
       color: rgba(255,255,255,0.85);
     }
     .path-illo svg { display: block; }
-    .path-illo-kar svg { width: 40px; height: auto; }
-    .path-illo-gamur svg { width: 84px; height: auto; }
+    .path-illo-kar svg { width: 62px; height: auto; }
+    .path-illo-gamur svg { width: 130px; height: auto; }
     .path-illo-label {
       font-size: 0.58rem;
       font-weight: 700;
@@ -562,15 +549,14 @@
       color: rgba(255,255,255,0.85);
     }
     .path-illo-or {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.55);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.95);
       align-self: center;
-      margin-bottom: 0.9rem;
     }
     /* Make room on the right so the text doesn't slide under the illos */
-    .path-pickup .path-content { padding-right: 160px; }
+    .path-pickup .path-content { padding-right: 230px; }
     .path-help {
       text-align: center;
       margin: 4rem auto 2.25rem;
@@ -653,25 +639,28 @@
       .path-card { padding: 1.75rem 1.5rem 1.75rem; }
       .path-title { font-size: 1.5rem; }
       .path-card.path-dropoff { transition-delay: 0s; }
-      /* On mobile: stack Kar above Gámabíll, with "eða" between, tucked bottom-right */
+      /* On mobile the illustrations leave the corner and become a centered
+         row below the text, big enough to read the Kar / Gámur labels. */
+      .path-pickup .path-content { padding-right: 0; }
       .path-illos {
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 0.4rem;
-        bottom: 1.25rem;
-        right: 1.25rem;
+        position: static;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1.6rem;
+        padding-top: 1.4rem;
+        border-top: 1px solid rgba(255,255,255,0.18);
       }
-      .path-illo { align-items: flex-end; }
-      .path-illo-kar svg { width: 44px; }
-      .path-illo-gamur svg { width: 92px; }
-      .path-illo-or { margin: 0; align-self: flex-end; padding-right: 0.5rem; }
-      .path-pickup .path-content { padding-right: 108px; }
+      .path-illo { align-items: center; }
+      .path-illo-kar svg { width: 82px; }
+      .path-illo-gamur svg { width: 172px; }
+      .path-illo-or { margin: 0; align-self: center; padding: 0; font-size: 0.95rem; }
     }
     @media (max-width: 400px) {
-      .path-illo-kar svg { width: 38px; }
-      .path-illo-gamur svg { width: 80px; }
-      .path-illo-label { font-size: 0.56rem; }
-      .path-pickup .path-content { padding-right: 96px; }
+      .path-illos { gap: 1rem; }
+      .path-illo-kar svg { width: 72px; }
+      .path-illo-gamur svg { width: 150px; }
     }
 
     .step {
@@ -903,12 +892,11 @@
     .metal-pane { display: none; }
     .metal-pane.active { display: contents; }
     .metal-image {
-      aspect-ratio: 4 / 3;
+      min-height: 360px;
       background-color: #ffffff;
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
-      align-self: stretch;
     }
     .metal-text {
       position: relative;
@@ -963,7 +951,7 @@
     }
     @media (max-width: 960px) {
       .metal-display { grid-template-columns: 1fr; max-width: 560px; }
-      .metal-image { aspect-ratio: 16 / 10; }
+      .metal-image { min-height: 0; aspect-ratio: 16 / 10; }
       .metal-text { padding: 1.75rem 1.5rem; }
       .metal-text h3 { font-size: 1.7rem; }
       .metal-text p { font-size: 1rem; }
@@ -1020,6 +1008,7 @@
       .metal-pane:not(.active) .metal-image,
       .metal-pane:not(.active) .metal-text { display: none; }
       .metal-pane.active .metal-image {
+        min-height: 0;
         aspect-ratio: 16 / 10;
         animation: metal-fade 0.4s ease;
       }
@@ -1647,7 +1636,6 @@
       .chip { padding: 0.4rem 0.8rem; font-size: 0.82rem; }
       .nav-logo img { max-width: 150px; }
       .nav-right { gap: 0.55rem; }
-      .lang-btn { padding: 2px 5px; font-size: 0.95rem; }
     }
     /* Cookie consent banner */
     .cookie-banner {
@@ -1691,14 +1679,9 @@
       <li><a href="#samband" class="nav-cta" data-en="Contact">Hafa samband</a></li>
     </ul>
     <div class="lang-switch" aria-label="Tungumál / Language">
-      <button type="button" class="lang-current" aria-haspopup="true" aria-expanded="false" aria-label="Velja tungumál / Select language">
-        <img src="flag-is.png" alt="" class="lang-flag">
-        <span class="lang-caret">▾</span>
-      </button>
-      <div class="lang-menu">
-        <button type="button" class="lang-option" data-lang="is"><img src="flag-is.png" alt="" class="lang-flag"><span>Íslenska</span></button>
-        <button type="button" class="lang-option" data-lang="en"><img src="flag-en.png" alt="" class="lang-flag"><span>English</span></button>
-      </div>
+      <button type="button" class="lang-opt" data-lang="is">IS</button>
+      <span class="lang-sep" aria-hidden="true">/</span>
+      <button type="button" class="lang-opt" data-lang="en">EN</button>
     </div>
     <button class="nav-burger" id="burger" aria-label="Valmynd">
       <span></span><span></span><span></span>
@@ -1741,36 +1724,39 @@
       </div>
       <div class="path-illos" aria-label="Ílát sem við bjóðum">
         <div class="path-illo path-illo-kar">
-          <svg viewBox="0 0 60 42" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M 8 12 L 8 32 L 52 32 L 52 12 Z"/>
-            <path d="M 12 16 L 48 16" opacity="0.55"/>
-            <path d="M 14 32 L 14 36 L 24 36 L 24 32"/>
-            <path d="M 36 32 L 36 36 L 46 36 L 46 32"/>
+          <svg viewBox="0 0 60 46" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <!-- Top rim with flared, rounded corners -->
+            <path d="M 5 13 Q 5 9 10 9 L 50 9 Q 55 9 55 13"/>
+            <!-- Open top -->
+            <path d="M 8 13 L 52 13"/>
+            <path d="M 13 15 L 47 15" opacity="0.45"/>
+            <!-- Body walls tapering inward toward the base -->
+            <path d="M 8 13 L 12 38 L 48 38 L 52 13"/>
+            <!-- Forklift pockets at the base -->
+            <path d="M 16 38 L 16 42 L 26 42 L 26 38"/>
+            <path d="M 34 38 L 34 42 L 44 42 L 44 38"/>
+            <!-- Label on the tub body -->
+            <text x="30" y="30.5" text-anchor="middle" fill="currentColor" stroke="none" font-size="12" font-weight="800" style="font-family:'Switzer',-apple-system,sans-serif;letter-spacing:0.3px">Kar</text>
           </svg>
-          <span class="path-illo-label">Kar</span>
         </div>
         <span class="path-illo-or" data-en="or">eða</span>
         <div class="path-illo path-illo-gamur">
-          <svg viewBox="0 0 130 52" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <!-- Container on back -->
-            <path d="M 42 6 L 42 32 L 124 32 L 124 6 Z"/>
-            <path d="M 54 6 L 54 32"/>
-            <path d="M 66 6 L 66 32"/>
-            <path d="M 78 6 L 78 32"/>
-            <path d="M 90 6 L 90 32"/>
-            <path d="M 102 6 L 102 32"/>
-            <path d="M 114 6 L 114 32"/>
-            <!-- Cab -->
-            <path d="M 4 16 L 4 32 L 40 32 L 40 20 L 28 20 L 24 16 Z"/>
-            <path d="M 8 22 L 22 22"/>
-            <!-- Chassis line -->
-            <path d="M 4 32 L 124 32"/>
-            <!-- Wheels -->
-            <circle cx="16" cy="36" r="4"/>
-            <circle cx="58" cy="36" r="4"/>
-            <circle cx="108" cy="36" r="4"/>
+          <svg viewBox="0 0 132 46" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <!-- Cab (faces left, tall Scania-style front) -->
+            <path d="M 5 33 L 5 20 L 9 20 L 13 10 L 33 10 L 33 33 Z"/>
+            <!-- Cab window -->
+            <path d="M 15 14 L 18 12 L 29 12 L 29 18 L 15 18 Z"/>
+            <!-- Container on the chassis behind the cab -->
+            <path d="M 40 7 L 40 32 L 126 32 L 126 7 Z"/>
+            <!-- Label on the clean container side -->
+            <text x="83" y="24" text-anchor="middle" fill="currentColor" stroke="none" font-size="13" font-weight="800" style="font-family:'Switzer',-apple-system,sans-serif;letter-spacing:0.3px">Gámur</text>
+            <!-- Chassis line linking cab to container -->
+            <path d="M 33 33 L 40 32"/>
+            <path d="M 33 34 L 126 34"/>
+            <!-- Wheels: one front, one rear -->
+            <circle cx="18" cy="37" r="4.5"/>
+            <circle cx="112" cy="37" r="4.5"/>
           </svg>
-          <span class="path-illo-label">Gámabíll</span>
         </div>
       </div>
     </div>
@@ -2035,43 +2021,22 @@
     if (window.innerWidth > 1100) menu.classList.remove('open');
   });
 
-  // ── Language switch dropdown (IS default, EN optional) ──
+  // ── Language switch: compact IS / EN toggle (IS default, EN optional) ──
   (function () {
     const KEY = 'fura-lang';
     const sw = document.querySelector('.lang-switch');
     if (!sw) return;
-    const toggle = sw.querySelector('.lang-current');
-    const menu = sw.querySelector('.lang-menu');
-    const flag = toggle.querySelector('.lang-flag');
-    const flagSrc = { is: 'flag-is.png', en: 'flag-en.png' };
+    const opts = sw.querySelectorAll('.lang-opt');
     function apply(lang) {
       document.documentElement.lang = lang;
       document.querySelectorAll('[data-en]').forEach(el => {
         if (el.dataset.is === undefined) el.dataset.is = el.innerHTML;
         el.innerHTML = (lang === 'en') ? el.dataset.en : el.dataset.is;
       });
-      flag.src = flagSrc[lang] || flagSrc.is;
-      sw.querySelectorAll('.lang-option').forEach(o =>
-        o.classList.toggle('active', o.dataset.lang === lang));
+      opts.forEach(o => o.classList.toggle('active', o.dataset.lang === lang));
       try { sessionStorage.setItem(KEY, lang); } catch (e) {}
     }
-    toggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const open = menu.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    sw.querySelectorAll('.lang-option').forEach(o =>
-      o.addEventListener('click', () => {
-        apply(o.dataset.lang);
-        menu.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }));
-    document.addEventListener('click', (e) => {
-      if (!sw.contains(e.target)) {
-        menu.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-    });
+    opts.forEach(o => o.addEventListener('click', () => apply(o.dataset.lang)));
     let saved = 'is';
     try { saved = sessionStorage.getItem(KEY) || 'is'; } catch (e) {}
     apply(saved);
