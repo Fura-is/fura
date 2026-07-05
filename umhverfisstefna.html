@@ -245,28 +245,6 @@
       .nav-logo img { max-width: 150px; }
       .nav-right { gap: 0.55rem; }
     }
-    /* Cookie consent banner */
-    .cookie-banner {
-      position: fixed; left: 50%; bottom: 18px;
-      transform: translateX(-50%) translateY(140%);
-      width: calc(100% - 32px); max-width: 560px; z-index: 300;
-      background: rgba(20,16,13,0.98); color: #fff;
-      border: 1px solid rgba(255,255,255,0.14); border-radius: 12px;
-      padding: 1.1rem 1.25rem; box-shadow: 0 12px 40px rgba(0,0,0,0.4);
-      display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem;
-      opacity: 0; pointer-events: none;
-      transition: transform 0.35s ease, opacity 0.35s ease;
-    }
-    .cookie-banner.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
-    .cookie-text { flex: 1 1 260px; font-size: 0.86rem; line-height: 1.55; color: rgba(255,255,255,0.8); margin: 0; }
-    .cookie-text a { color: #7aaee8; text-decoration: none; }
-    .cookie-text a:hover { text-decoration: underline; }
-    .cookie-actions { display: flex; gap: 0.5rem; flex-shrink: 0; }
-    .cookie-btn { font-family: inherit; font-size: 0.85rem; font-weight: 600; border-radius: 6px; padding: 0.5rem 1rem; cursor: pointer; border: 1px solid transparent; transition: opacity 0.2s, background 0.2s, border-color 0.2s, color 0.2s; }
-    .cookie-accept { background: var(--blue); color: #fff; }
-    .cookie-accept:hover { opacity: 0.88; }
-    .cookie-decline { background: transparent; color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.25); }
-    .cookie-decline:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
   </style>
 </head>
 <body>
@@ -313,15 +291,6 @@
   <p class="about-text" data-en="With powerful equipment and systematic sorting, as much of the material as possible is given new life. In this way metals, timber and tyres become valuable resources instead of waste.">Með öflugum tækjabúnaði og markvissri flokkun fær sem mest af efnunum nýtt líf. Þannig verða málmar, timbur og hjólbarðar að verðmætum auðlindum í stað úrgangs.</p>
 </div>
 
-<!-- COOKIE CONSENT -->
-<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Vafrakökur / Cookies">
-  <p class="cookie-text" data-en="We use cookies to measure traffic and improve the website. You can accept or decline.">Við notum vafrakökur (cookies) til að mæla umferð og bæta vefinn. Þú getur samþykkt eða hafnað.</p>
-  <div class="cookie-actions">
-    <button type="button" class="cookie-btn cookie-decline" id="cookieDecline" data-en="Decline">Hafna</button>
-    <button type="button" class="cookie-btn cookie-accept" id="cookieAccept" data-en="Accept">Samþykkja</button>
-  </div>
-</div>
-
 <script>
   const burger = document.getElementById('burger');
   const menu = document.getElementById('mobile-menu');
@@ -345,44 +314,6 @@
     let saved = 'is';
     try { saved = sessionStorage.getItem(KEY) || 'is'; } catch (e) {}
     apply(saved);
-  })();
-
-  // ── Cookie consent + Google Analytics (loads ONLY after acceptance) ──
-  (function () {
-    const KEY = 'fura-cookie-consent';
-    const GA_ID = 'G-XXXXXXXXXX'; // ← settu Google Analytics auðkennið hér þegar vefurinn er kominn á netið
-    const banner = document.getElementById('cookieBanner');
-    function loadGA() {
-      if (window.__furaGA || !GA_ID || GA_ID.indexOf('XXXX') !== -1) return;
-      window.__furaGA = true;
-      const s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
-      document.head.appendChild(s);
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){ dataLayer.push(arguments); }
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', GA_ID);
-    }
-    let consent = null;
-    try { consent = localStorage.getItem(KEY); } catch (e) {}
-    if (consent === 'accepted') {
-      loadGA();
-    } else if (!consent && banner) {
-      setTimeout(() => banner.classList.add('show'), 600);
-    }
-    const accept = document.getElementById('cookieAccept');
-    const decline = document.getElementById('cookieDecline');
-    if (accept) accept.addEventListener('click', () => {
-      try { localStorage.setItem(KEY, 'accepted'); } catch (e) {}
-      if (banner) banner.classList.remove('show');
-      loadGA();
-    });
-    if (decline) decline.addEventListener('click', () => {
-      try { localStorage.setItem(KEY, 'declined'); } catch (e) {}
-      if (banner) banner.classList.remove('show');
-    });
   })();
 
   // ── Reveal section rules on scroll ──

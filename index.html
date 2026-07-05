@@ -661,12 +661,8 @@
 
     /* ── COVERAGE: Ísland-kort með FURA-merki ── */
     .coverage {
-      max-width: 900px;
-      margin: 4.5rem auto 0;
-      background: var(--white);
-      border: 1px solid rgba(20,16,13,0.06);
-      border-radius: 14px;
-      padding: 3.5rem 1.5rem 3rem;
+      max-width: 680px;
+      margin: 4rem auto 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -675,7 +671,7 @@
     .coverage-map {
       position: relative;
       width: 100%;
-      max-width: 460px;
+      max-width: 560px;
       margin: 0 auto;
     }
     .coverage-iceland {
@@ -700,18 +696,21 @@
       stroke-width: 7;
     }
     .coverage-caption {
-      margin-top: 1.75rem;
-      max-width: 520px;
-      font-size: 1.2rem;
-      line-height: 1.5;
-      font-weight: 500;
-      letter-spacing: -0.01em;
+      margin-top: 1.5rem;
+      max-width: 600px;
+      font-size: clamp(1.4rem, 1.05rem + 1.6vw, 1.9rem);
+      line-height: 1.3;
+      font-weight: 700;
+      letter-spacing: -0.025em;
       color: var(--ink);
+      text-wrap: balance;
+    }
+    .coverage-caption strong {
+      color: var(--blue);
+      font-weight: 700;
     }
     @media (max-width: 700px) {
-      .coverage { padding: 2.5rem 1.25rem 2.25rem; }
-      .coverage-map { max-width: 300px; }
-      .coverage-caption { font-size: 1.05rem; }
+      .coverage-map { max-width: 340px; }
     }
 
     .step {
@@ -1056,11 +1055,12 @@
         content: '−';
         transform: rotate(0deg);
       }
-      .metal-pane:not(.active) .metal-image,
       .metal-pane:not(.active) .metal-text { display: none; }
-      .metal-pane.active .metal-image {
+      .metal-image {
         min-height: 0;
         aspect-ratio: 16 / 10;
+      }
+      .metal-pane.active .metal-image {
         animation: metal-fade 0.4s ease;
       }
       .metal-pane.active .metal-text {
@@ -1688,28 +1688,6 @@
       .nav-logo img { max-width: 150px; }
       .nav-right { gap: 0.55rem; }
     }
-    /* Cookie consent banner */
-    .cookie-banner {
-      position: fixed; left: 50%; bottom: 18px;
-      transform: translateX(-50%) translateY(140%);
-      width: calc(100% - 32px); max-width: 560px; z-index: 300;
-      background: rgba(20,16,13,0.98); color: #fff;
-      border: 1px solid rgba(255,255,255,0.14); border-radius: 12px;
-      padding: 1.1rem 1.25rem; box-shadow: 0 12px 40px rgba(0,0,0,0.4);
-      display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem;
-      opacity: 0; pointer-events: none;
-      transition: transform 0.35s ease, opacity 0.35s ease;
-    }
-    .cookie-banner.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
-    .cookie-text { flex: 1 1 260px; font-size: 0.86rem; line-height: 1.55; color: rgba(255,255,255,0.8); margin: 0; }
-    .cookie-text a { color: #7aaee8; text-decoration: none; }
-    .cookie-text a:hover { text-decoration: underline; }
-    .cookie-actions { display: flex; gap: 0.5rem; flex-shrink: 0; }
-    .cookie-btn { font-family: inherit; font-size: 0.85rem; font-weight: 600; border-radius: 6px; padding: 0.5rem 1rem; cursor: pointer; border: 1px solid transparent; transition: opacity 0.2s, background 0.2s, border-color 0.2s, color 0.2s; }
-    .cookie-accept { background: var(--blue); color: #fff; }
-    .cookie-accept:hover { opacity: 0.88; }
-    .cookie-decline { background: transparent; color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.25); }
-    .cookie-decline:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
   </style>
 </head>
 <body>
@@ -2163,7 +2141,7 @@ c-38 -39 -41 -39 -90 -33 -28 4 -61 13 -73 21 -19 13 -25 12 -56 -7 -34 -21
           <path d="M29.0614 0V15.465C29.0614 17.7365 29.432 19.3474 30.2858 20.3945C31.1396 21.4416 32.6538 21.9088 34.9253 21.9088C37.1 21.9088 38.6143 21.4416 39.4681 20.3945C40.3219 19.3474 40.6924 17.7365 40.6924 15.465V0H46.0891V15.6583C46.0891 17.2693 45.9924 18.6869 45.7991 19.8307C45.6058 20.9744 45.1386 21.9249 44.5748 22.5854C43.5277 23.8258 42.2067 24.7602 40.5958 25.3401C38.9848 25.9039 37.1 26.1939 34.8286 26.1939C32.5572 26.1939 30.6724 25.9039 29.0614 25.3401C27.4505 24.7763 26.1295 23.8258 25.0824 22.5854C24.5186 21.9249 24.132 20.9744 23.9548 19.8307C23.7615 18.6869 23.6648 17.2693 23.6648 15.6583V0H29.0614Z"/>
       </svg>
     </div>
-    <p class="coverage-caption" data-en="Headquartered in both the capital area and Akureyri, we serve every region of the country.">Með höfuðstöðvar á bæði höfuðborgarsvæðinu og Akureyri þjónustum við alla landshluta.</p>
+    <p class="coverage-caption" data-en="Headquartered in both the <strong>capital area and Akureyri</strong>, we serve <strong>every region of the country</strong>.">Með höfuðstöðvar á bæði <strong>höfuðborgarsvæðinu og Akureyri</strong> þjónustum við <strong>alla landshluta</strong>.</p>
   </div>
 </section>
 
@@ -2375,15 +2353,6 @@ c-38 -39 -41 -39 -90 -33 -28 4 -61 13 -73 21 -19 13 -25 12 -56 -7 -34 -21
   </div>
 </footer>
 
-<!-- COOKIE CONSENT -->
-<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Vafrakökur / Cookies">
-  <p class="cookie-text" data-en="We use cookies to measure traffic and improve the website. You can accept or decline.">Við notum vafrakökur (cookies) til að mæla umferð og bæta vefinn. Þú getur samþykkt eða hafnað.</p>
-  <div class="cookie-actions">
-    <button type="button" class="cookie-btn cookie-decline" id="cookieDecline" data-en="Decline">Hafna</button>
-    <button type="button" class="cookie-btn cookie-accept" id="cookieAccept" data-en="Accept">Samþykkja</button>
-  </div>
-</div>
-
 <script>
   const burger = document.getElementById('burger');
   const menu = document.getElementById('mobile-menu');
@@ -2505,44 +2474,6 @@ c-38 -39 -41 -39 -90 -33 -28 4 -61 13 -73 21 -19 13 -25 12 -56 -7 -34 -21
     window.addEventListener('resize', onScroll);
     onScroll();
   }
-
-  // ── Cookie consent + Google Analytics (loads ONLY after acceptance) ──
-  (function () {
-    const KEY = 'fura-cookie-consent';
-    const GA_ID = 'G-XXXXXXXXXX'; // ← settu Google Analytics auðkennið hér þegar vefurinn er kominn á netið
-    const banner = document.getElementById('cookieBanner');
-    function loadGA() {
-      if (window.__furaGA || !GA_ID || GA_ID.indexOf('XXXX') !== -1) return;
-      window.__furaGA = true;
-      const s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
-      document.head.appendChild(s);
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){ dataLayer.push(arguments); }
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', GA_ID);
-    }
-    let consent = null;
-    try { consent = localStorage.getItem(KEY); } catch (e) {}
-    if (consent === 'accepted') {
-      loadGA();
-    } else if (!consent && banner) {
-      setTimeout(() => banner.classList.add('show'), 600);
-    }
-    const accept = document.getElementById('cookieAccept');
-    const decline = document.getElementById('cookieDecline');
-    if (accept) accept.addEventListener('click', () => {
-      try { localStorage.setItem(KEY, 'accepted'); } catch (e) {}
-      if (banner) banner.classList.remove('show');
-      loadGA();
-    });
-    if (decline) decline.addEventListener('click', () => {
-      try { localStorage.setItem(KEY, 'declined'); } catch (e) {}
-      if (banner) banner.classList.remove('show');
-    });
-  })();
 
   // ── Reveal section rules + path cards on scroll ──
   (function () {
