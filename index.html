@@ -2410,6 +2410,14 @@ c-38 -39 -41 -39 -90 -33 -28 4 -61 13 -73 21 -19 13 -25 12 -56 -7 -34 -21
     }
     setMetal(pane.dataset.pane);
   }));
+  // Wide layouts show only the active metal. The mobile accordion lets you
+  // collapse them all — if you then widen the window the section would be
+  // empty, so re-open the first metal whenever we grow past the breakpoint.
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 700 && metalPanes.length && !document.querySelector('.metal-pane.active')) {
+      setMetal(metalPanes[0].dataset.pane);
+    }
+  });
 
   // On mobile/touch devices just show all steps immediately — no tap required
   const stepCards = Array.from(document.querySelectorAll('.steps .step'));
