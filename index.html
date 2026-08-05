@@ -319,6 +319,15 @@
       margin-bottom: 1.25rem;
     }
     .hero h1 em { font-style: normal; color: #7aaee8; }
+    .hero h1 .type-cursor {
+      color: #7aaee8;
+      font-weight: 400;
+      animation: type-blink 0.9s steps(1) infinite;
+    }
+    @keyframes type-blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) {
+      .hero h1 .type-cursor { animation: none; }
+    }
 
     .hero-sub {
       font-size: 1.05rem;
@@ -1016,7 +1025,8 @@
       }
       .metal-pane {
         grid-area: auto;
-        display: block;
+        display: flex;
+        flex-direction: column;
         opacity: 1;
         pointer-events: auto;
         background: var(--white);
@@ -1026,14 +1036,19 @@
         transition: box-shadow 0.25s ease;
       }
       .metal-pane.active { box-shadow: 0 8px 22px rgba(20,16,13,0.1); }
+      /* Image first, then a clear labelled toggle bar under it, then the text */
+      .metal-image { order: 1; }
+      .metal-summary { order: 2; }
+      .metal-text { order: 3; }
       .metal-summary {
         display: flex !important;
         align-items: center;
         justify-content: space-between;
+        gap: 1rem;
         width: 100%;
-        padding: 1.1rem 1.3rem;
+        padding: 0.9rem 1.2rem;
         font-family: inherit;
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         font-weight: 700;
         color: var(--ink);
         background: transparent;
@@ -1042,19 +1057,20 @@
         text-align: left;
         -webkit-tap-highlight-color: transparent;
       }
+      /* Right-hand affordance: a compact, clearly-labelled toggle. Uses CSS
+         ::after keyed off <html lang> so it survives the IS/EN text swap. */
       .metal-summary::after {
-        content: '+';
-        font-size: 1.5rem;
-        font-weight: 400;
+        content: 'Frekari upplýsingar \25BE';
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
         color: var(--blue);
-        line-height: 1;
-        transition: transform 0.25s ease;
+        white-space: nowrap;
+        flex-shrink: 0;
       }
-      .metal-pane.active .metal-summary { color: var(--blue); }
-      .metal-pane.active .metal-summary::after {
-        content: '−';
-        transform: rotate(0deg);
-      }
+      html[lang="en"] .metal-summary::after { content: 'More info \25BE'; }
+      .metal-pane.active .metal-summary::after { content: 'Loka \25B4'; }
+      html[lang="en"] .metal-pane.active .metal-summary::after { content: 'Close \25B4'; }
       .metal-pane:not(.active) .metal-text { display: none; }
       .metal-image {
         min-height: 0;
@@ -1069,9 +1085,8 @@
         animation: metal-fade 0.4s ease 0.05s both;
       }
       .metal-pane.active .metal-text::before { display: none; }
-      .metal-pane.active .metal-text h3 { font-size: 1.35rem; }
-      .metal-pane.active .metal-text h3::after { width: 32px; margin-top: 0.6rem; }
-      .metal-pane.active .metal-text p { font-size: 0.95rem; line-height: 1.65; margin-top: 0.85rem; }
+      .metal-pane.active .metal-text h3, .metal-pane.active .metal-text h3::after { display: none; }
+      .metal-pane.active .metal-text p { font-size: 0.95rem; line-height: 1.65; margin-top: 0; }
     }
     @keyframes metal-fade {
       from { opacity: 0; transform: translateY(-4px); }
@@ -2502,6 +2517,64 @@ c-38 -39 -41 -39 -90 -33 -28 4 -61 13 -73 21 -19 13 -25 12 -56 -7 -34 -21
       });
     }, { threshold: 0.25, rootMargin: "0px 0px -10% 0px" });
     reveals.forEach(r => obs.observe(r));
+  })();
+
+  // ── Hero headline: typewriter intro (types once on load, cursor keeps blinking) ──
+  (function () {
+    const h1 = document.querySelector('.hero h1');
+    if (!h1) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Read the two display lines from the current (clean) markup: line 1 (white)
+    // is the text before <br>, line 2 (blue) is the <em> content.
+    function getLines() {
+      const em = h1.querySelector('em');
+      const line2 = em ? em.textContent : '';
+      let line1 = '';
+      for (const node of h1.childNodes) {
+        if (node.nodeName === 'BR') break;
+        if (node.nodeType === 3) line1 += node.textContent;
+      }
+      return [line1.trim(), line2.trim()];
+    }
+    function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    function paint(a, b, showLine2) {
+      let html = esc(a);
+      if (showLine2) html += '<br><em>' + esc(b) + '</em>';
+      h1.innerHTML = html + '<span class="type-cursor" aria-hidden="true">_</span>';
+    }
+
+    let timer = null;
+    function type() {
+      if (timer) { clearTimeout(timer); timer = null; }
+      const [l1, l2] = getLines();
+      h1.setAttribute('aria-label', (l1 + ' ' + l2).trim());
+      if (reduce) return; // honour reduced-motion: leave the static text
+      // Lock height so the button below doesn't jump while the text types in.
+      h1.style.minHeight = h1.getBoundingClientRect().height + 'px';
+      const total = l1.length + l2.length;
+      let i = 0;
+      function step() {
+        i++;
+        const n1 = Math.min(i, l1.length);
+        const n2 = Math.max(0, i - l1.length);
+        paint(l1.slice(0, n1), l2.slice(0, n2), n2 > 0);
+        if (i < total) {
+          timer = setTimeout(step, 70);
+        } else {
+          const c = h1.querySelector('.type-cursor');
+          if (c) c.remove(); // drop the cursor once typing is done
+        }
+      }
+      paint('', '', false);
+      timer = setTimeout(step, 450);
+    }
+
+    type();
+    // Re-type when the language is switched (markup swaps to the other language).
+    document.querySelectorAll('.lang-switch .lang-opt').forEach(o =>
+      o.addEventListener('click', () => setTimeout(type, 0))
+    );
   })();
 </script>
 
