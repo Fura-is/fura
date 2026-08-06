@@ -1008,20 +1008,16 @@
       line-height: 1.75;
       margin: 1.1rem 0 0;
     }
+    /* Tablet + phone: image always on top with a "more info" toggle, never
+       a text-only card. Side-by-side (image | text) only kicks in above 960px
+       where both comfortably fit. */
     @media (max-width: 960px) {
-      .metal-display { grid-template-columns: 1fr; max-width: 560px; }
-      .metal-image { min-height: 0; aspect-ratio: 16 / 10; }
-      .metal-text { padding: 1.75rem 1.5rem; }
-      .metal-text h3 { font-size: 1.7rem; }
-      .metal-text p { font-size: 1rem; }
-    }
-    @media (max-width: 700px) {
       .metals-chips { display: none; }
       .metal-display {
         display: flex;
         flex-direction: column;
         gap: 0.6rem;
-        max-width: 100%;
+        max-width: 640px;
       }
       .metal-pane {
         grid-area: auto;
@@ -1035,7 +1031,10 @@
         box-shadow: 0 2px 8px rgba(20,16,13,0.06);
         transition: box-shadow 0.25s ease;
       }
-      .metal-pane.active { box-shadow: 0 8px 22px rgba(20,16,13,0.1); }
+      /* Keep the active pane as its own flex box (NOT display:contents from the
+         base rule) so the image/toggle/text order stays inside the card and the
+         card keeps its position in the list instead of jumping to the bottom. */
+      .metal-pane.active { display: flex; box-shadow: 0 8px 22px rgba(20,16,13,0.1); }
       /* Image first, then a clear labelled toggle bar under it, then the text */
       .metal-image { order: 1; }
       .metal-summary { order: 2; }
@@ -2419,7 +2418,7 @@ c-38 -39 -41 -39 -90 -33 -28 4 -61 13 -73 21 -19 13 -25 12 -56 -7 -34 -21
     const pane = sum.closest('.metal-pane');
     if (!pane) return;
     // On mobile, tapping the open one collapses it
-    const isMobile = window.matchMedia('(max-width: 700px)').matches;
+    const isMobile = window.matchMedia('(max-width: 960px)').matches;
     if (isMobile && pane.classList.contains('active')) {
       metalPanes.forEach(p => p.classList.remove('active'));
       sum.setAttribute('aria-expanded', 'false');
@@ -2431,7 +2430,7 @@ c-38 -39 -41 -39 -90 -33 -28 4 -61 13 -73 21 -19 13 -25 12 -56 -7 -34 -21
   // collapse them all — if you then widen the window the section would be
   // empty, so re-open the first metal whenever we grow past the breakpoint.
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 700 && metalPanes.length && !document.querySelector('.metal-pane.active')) {
+    if (window.innerWidth > 960 && metalPanes.length && !document.querySelector('.metal-pane.active')) {
       setMetal(metalPanes[0].dataset.pane);
     }
   });
