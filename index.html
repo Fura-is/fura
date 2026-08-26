@@ -1171,8 +1171,18 @@
       position: relative;
       z-index: 1;
       max-width: 640px;
+      display: flex;
+      flex-direction: column;
+      min-height: 320px;
     }
     .bilaf-main { width: 100%; }
+    /* "Sjá nánar" sits at the bottom of the banner image, slightly larger */
+    .bilaf-more-btn {
+      align-self: flex-start;
+      margin-top: auto;
+      padding: 0.95rem 2.15rem;
+      font-size: 1.05rem;
+    }
     .bilaf-side { width: 100%; margin-top: 2.5rem; }
 
     .bilaforgun-wrap .section-label { color: #5b8def; }
@@ -1187,6 +1197,9 @@
       margin: 1.1rem 0 1.75rem;
     }
 
+    .bilaf-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 1.1rem; margin-top: 0.5rem; }
+    .bilaf-link { color: #fff; font-weight: 600; font-size: 0.95rem; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(255,255,255,0.4); transition: text-decoration-color 0.2s; }
+    .bilaf-link:hover { text-decoration-color: #fff; }
     .bilaf-more { max-width: 540px; margin-top: 1.75rem; }
     .bilaf-more summary {
       cursor: pointer;
@@ -2263,25 +2276,10 @@ c-38 -39 -41 -39 -90 -33 -28 4 -61 13 -73 21 -19 13 -25 12 -56 -7 -34 -21
     <div class="section-label" data-en="Car recycling">Bílaförgun</div>
     <div class="rule"></div>
     <h2 class="section-title reveal" data-en="Scrap your car at Fura">Fargaðu bílnum hjá Furu</h2>
-    <p class="bilaf-intro" data-en="We accept all vehicles for scrapping. You can now complete the deregistration with electronic ID, and vehicle owners are paid 30,000 ISK in return from the State Treasury (Fjársýsla ríkisins).">Við tökum á móti öllum ökutækjum í förgun. Nú er hægt að klára afskráningu með rafrænum skilríkjum og eigendur ökutækja fá í staðinn greiddar 30.000 kr. frá Fjársýslu ríkisins.</p>
-    <a href="https://island.is/umsoknir/skilavottord/e2a1d19b-4b95-4085-8922-dbbb70632b98" target="_blank" class="btn-blue" data-en="Apply for a vehicle deregistration certificate →">Sækja um skilavottorð ökutækja →</a>
-    <details class="bilaf-more">
-      <summary data-en="More information">Nánari upplýsingar</summary>
-      <div class="bilaf-more-body">
-        <p data-en="⚠️ We do not accept electric or hybrid cars unless the battery has been removed from the vehicle.">⚠️ Við tökum ekki við rafmagns- eða hybrid-bílum nema búið sé að fjarlægja batteríið úr bílnum.</p>
-        <p data-en="Please mark the car for deregistration before it is scrapped or collected.">Vinsamlegast merkið bílinn til afskráningar áður en honum er fargað eða hann sóttur.</p>
-      </div>
-    </details>
+    <p class="bilaf-intro" data-en="We accept all vehicles for scrapping and pay you 30,000 ISK for the car from the State Treasury.">Við tökum á móti öllum ökutækjum í förgun og greiðum þér 30.000 kr fyrir bílinn frá Fjársýslu ríkisins.</p>
+    <a href="https://island.is/umsoknir/skilavottord/e2a1d19b-4b95-4085-8922-dbbb70632b98" target="_blank" class="bilaf-link" data-en="Apply for a certificate →">Sækja um skilavottorð →</a>
     </div>
-    <div class="bilaf-side reveal delay-1">
-      <div class="bilaf-contact">
-        <span class="bilaf-contact-label" data-en="Questions about your vehicle? Get in touch:">Spurningar um ökutækið þitt? Hafðu samband:</span>
-        <div class="bilaf-contact-links">
-          <a href="tel:5653557"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>565 3557</a>
-          <a href="mailto:afgreidsla@fura.is"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>afgreidsla@fura.is</a>
-        </div>
-      </div>
-    </div>
+    <a href="bilaforgun.html" class="btn-blue bilaf-more-btn reveal delay-1" data-en="See more →">Sjá nánar →</a>
   </div>
 </section>
 
