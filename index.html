@@ -17,7 +17,7 @@
   <meta property="og:title" content="Fura — Málmendurvinnsla á Íslandi" />
   <meta property="og:description" content="Fura Málmendurvinnsla kaupir járn, ál, kopar, messing, blý og fleiri málma. Sækjum gáma á höfuðborgarsvæðinu, á Akureyri og nágrenni — yfir 40 ára reynsla síðan 1981." />
   <meta property="og:url" content="https://fura.is/" />
-  <meta property="og:image" content="https://assets.mango.is/media/8/czdM_s_0E9Fx2Omq.jpeg" />
+  <meta property="og:image" content="https://fura.is/hero-forsida.jpg" />
   <meta property="og:image:width" content="3278" />
   <meta property="og:image:height" content="2184" />
   <meta property="og:image:alt" content="Fura Málmendurvinnsla — málmaendurvinnsla á Íslandi" />
@@ -26,7 +26,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Fura — Málmendurvinnsla á Íslandi" />
   <meta name="twitter:description" content="Fura Málmendurvinnsla kaupir járn, ál, kopar, messing, blý og fleiri málma. Sækjum gáma á höfuðborgarsvæðinu og á Akureyri." />
-  <meta name="twitter:image" content="https://assets.mango.is/media/8/czdM_s_0E9Fx2Omq.jpeg" />
+  <meta name="twitter:image" content="https://fura.is/hero-forsida.jpg" />
 
   <!-- Theme color for mobile browser UI -->
   <meta name="theme-color" content="#1a50a2" />
@@ -39,7 +39,7 @@
     "name": "Fura Málmendurvinnsla",
     "alternateName": "Fura ehf.",
     "url": "https://fura.is/",
-    "logo": "https://assets.mango.is/media/8/u_Fura_Logo_Long.svg",
+    "logo": "https://fura.is/fura-logo.svg",
     "description": "Málmendurvinnsla á Íslandi síðan 1981. Kaupum járn, ál, kopar, messing, blý og fleiri málma.",
     "foundingDate": "1981",
     "areaServed": [
@@ -58,7 +58,7 @@
     "@type": "RecyclingCenter",
     "@id": "https://fura.is/#hafnarfjordur",
     "name": "Fura Málmendurvinnsla — Hafnarfjörður",
-    "image": "https://assets.mango.is/media/8/czdM_s_0E9Fx2Omq.jpeg",
+    "image": "https://fura.is/hero-forsida.jpg",
     "url": "https://fura.is/#hafnarfjordur",
     "telephone": "+354-565-3557",
     "email": "fura@fura.is",
@@ -83,7 +83,7 @@
     "@type": "RecyclingCenter",
     "@id": "https://fura.is/#akureyri",
     "name": "Fura Málmendurvinnsla — Akureyri",
-    "image": "https://assets.mango.is/media/8/czdM_s_0E9Fx2Omq.jpeg",
+    "image": "https://fura.is/hero-forsida.jpg",
     "url": "https://fura.is/#akureyri",
     "telephone": "+354-894-4238",
     "email": "gunnar@fura.is",
@@ -1008,84 +1008,51 @@
       line-height: 1.75;
       margin: 1.1rem 0 0;
     }
-    /* Tablet + phone: image always on top with a "more info" toggle, never
-       a text-only card. Side-by-side (image | text) only kicks in above 960px
-       where both comfortably fit. */
+    /* Tablet + phone: same model as desktop — pick a metal from the chips at
+       the top, then only that metal's image (on top) and info (under it) show.
+       No stacked giant images of every metal. */
     @media (max-width: 960px) {
-      .metals-chips { display: none; }
+      .metals-chips {
+        justify-content: flex-start;
+        margin-bottom: 0.5rem;
+      }
       .metal-display {
-        display: flex;
-        flex-direction: column;
-        gap: 0.6rem;
-        max-width: 640px;
-      }
-      .metal-pane {
-        grid-area: auto;
-        display: flex;
-        flex-direction: column;
-        opacity: 1;
-        pointer-events: auto;
-        background: var(--white);
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(20,16,13,0.06);
-        transition: box-shadow 0.25s ease;
-      }
-      /* Keep the active pane as its own flex box (NOT display:contents from the
-         base rule) so the image/toggle/text order stays inside the card and the
-         card keeps its position in the list instead of jumping to the bottom. */
-      .metal-pane.active { display: flex; box-shadow: 0 8px 22px rgba(20,16,13,0.1); }
-      /* Image first, then a clear labelled toggle bar under it, then the text */
-      .metal-image { order: 1; }
-      .metal-summary { order: 2; }
-      .metal-text { order: 3; }
-      .metal-summary {
-        display: flex !important;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
-        width: 100%;
-        padding: 0.9rem 1.2rem;
-        font-family: inherit;
-        font-size: 1.05rem;
-        font-weight: 700;
-        color: var(--ink);
+        display: block;
         background: transparent;
-        border: none;
-        cursor: pointer;
-        text-align: left;
-        -webkit-tap-highlight-color: transparent;
+        box-shadow: none;
+        border-radius: 0;
+        overflow: visible;
+        max-width: 640px;
+        margin-top: 1.5rem;
       }
-      /* Right-hand affordance: a compact, clearly-labelled toggle. Uses CSS
-         ::after keyed off <html lang> so it survives the IS/EN text swap. */
-      .metal-summary::after {
-        content: 'Frekari upplýsingar \25BE';
-        font-size: 0.8rem;
-        font-weight: 600;
-        letter-spacing: 0.01em;
-        color: var(--blue);
-        white-space: nowrap;
-        flex-shrink: 0;
+      /* Accordion toggle bar is not used on mobile anymore — chips are the picker */
+      .metal-summary { display: none !important; }
+      .metal-pane { display: none; }
+      .metal-pane.active {
+        display: flex;
+        flex-direction: column;
+        background: var(--white);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 22px rgba(20,16,13,0.1);
       }
-      html[lang="en"] .metal-summary::after { content: 'More info \25BE'; }
-      .metal-pane.active .metal-summary::after { content: 'Loka \25B4'; }
-      html[lang="en"] .metal-pane.active .metal-summary::after { content: 'Close \25B4'; }
-      .metal-pane:not(.active) .metal-text { display: none; }
+      /* Image on top, text under it */
       .metal-image {
+        order: 1;
         min-height: 0;
         aspect-ratio: 16 / 10;
-      }
-      .metal-pane.active .metal-image {
         animation: metal-fade 0.4s ease;
       }
-      .metal-pane.active .metal-text {
-        padding: 0 1.3rem 1.4rem;
+      .metal-text {
+        order: 2;
+        padding: 1.4rem 1.3rem 1.6rem;
         background: #fff;
         animation: metal-fade 0.4s ease 0.05s both;
       }
-      .metal-pane.active .metal-text::before { display: none; }
-      .metal-pane.active .metal-text h3, .metal-pane.active .metal-text h3::after { display: none; }
-      .metal-pane.active .metal-text p { font-size: 0.95rem; line-height: 1.65; margin-top: 0; }
+      .metal-text::before { display: none; }
+      .metal-text h3 { font-size: 1.5rem; }
+      .metal-text h3::after { margin-top: 0.65rem; }
+      .metal-text p { font-size: 0.95rem; line-height: 1.65; margin-top: 0.9rem; }
     }
     @keyframes metal-fade {
       from { opacity: 0; transform: translateY(-4px); }
@@ -1500,7 +1467,7 @@
     }
 
     .env-img {
-      background-image: url('https://assets.mango.is/media/8/izZdYpPV4CnzRhYJ.jpg');
+      background-image: url('fura-bg.jpg');
       background-size: cover;
       background-position: center;
       min-height: 420px;
@@ -1734,7 +1701,7 @@
       <li><a href="#thjonusta" data-spy="thjonusta" data-en="Services">Þjónusta</a></li>
       <li><a href="#malmar" data-spy="malmar" data-en="Metals">Málmar</a></li>
       <li><a href="bilaforgun.html" data-en="Car recycling">Bílaförgun</a></li>
-      <li><a href="um-furu.html" data-en="About Fura">Um Furu</a></li>
+      <li><a href="um-furu.html" data-spy="afhverju-fura" data-en="About Fura">Um Furu</a></li>
       <li><a href="furuflis.html" class="nav-ff"><img src="furuflis-logo.png" alt="Furuflís" /></a></li>
       <li><a href="#samband" class="nav-cta" data-en="Contact">Hafa samband</a></li>
     </ul>
