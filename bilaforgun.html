@@ -513,13 +513,15 @@
       <span data-en="Follow us">Fylgdu okkur</span>
     </a>
     <div class="footer-bottom-info">
-      <p>© 2025 Fura Málmendurvinnsla · Kt. 621281-1009</p>
+      <p>© <span id="year">2026</span> Fura Málmendurvinnsla · Kt. 621281-1009</p>
       <a href="https://fura.is" target="_blank">fura.is</a>
     </div>
   </div>
 </footer>
 
 <script>
+  // Keep footer copyright year current automatically
+  (function () { var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear(); })();
   const burger = document.getElementById('burger');
   const menu = document.getElementById('mobile-menu');
   burger.addEventListener('click', () => menu.classList.toggle('open'));
