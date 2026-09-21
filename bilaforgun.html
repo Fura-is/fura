@@ -155,6 +155,16 @@
     .step p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
     .step-btn { display: inline-flex; align-items: center; gap: 0.3rem; margin-top: 0.85rem; font-size: 0.85rem; font-weight: 700; color: var(--blue); text-decoration: none; }
     .step-btn:hover { text-decoration: underline; }
+    .transport { margin-top: 0.85rem; }
+    .transport summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.85rem; font-weight: 700; color: var(--blue); }
+    .transport summary::-webkit-details-marker { display: none; }
+    .transport summary::after { content: '▾'; font-size: 0.7rem; transition: transform 0.2s; }
+    .transport[open] summary::after { transform: rotate(180deg); }
+    .transport-list { margin-top: 0.7rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .transport-co { font-size: 0.85rem; line-height: 1.35; }
+    .transport-co strong { display: block; color: var(--ink); font-weight: 700; }
+    .transport-co a { color: var(--blue); font-weight: 600; text-decoration: none; }
+    .transport-co a:hover { text-decoration: underline; }
     @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } .step.featured { grid-column: auto; } }
 
     /* ── NOTE BOX ── */
@@ -407,7 +417,7 @@
   <div class="wrap">
     <div class="rule"></div>
     <p class="lead" data-en="Fura handles car scrapping and deregistration in Hafnarfjörður and Akureyri. Complete the deregistration with electronic ID and get 30,000 ISK from the Financial Management Authority (Fjársýsla ríkisins) for the car.">Fura sér um bílaförgun og afskráningu ökutækja í Hafnarfirði og á Akureyri. Kláraðu afskráninguna með rafrænum skilríkjum og fáðu 30.000 kr frá Fjársýslu ríkisins fyrir bílinn.</p>
-    <p style="margin-top:0.4rem;font-size:1.1rem;line-height:1.8;color:#45403a;font-weight:700" data-en="A scrapping fee now applies to all travel trailers.">Förgunargjald er nú á öllum ferðavögnum.</p>
+    <p style="margin-top:0.4rem;font-size:1.1rem;line-height:1.8;color:#45403a;font-weight:700" data-en="A scrapping fee now applies to all caravans and campers.">Förgunargjald er nú á öllum ferðavögnum.</p>
   </div>
 </section>
 
@@ -428,7 +438,15 @@
         <div class="step-num">2</div>
         <h3 data-en="Bring the car">Komdu með bílinn</h3>
         <p data-en="Bring the car to us on your own or with a car transport service. We don't offer a pickup service for vehicles.">Komdu með bílinn til okkar á eigin vegum eða með bílaflutningsþjónustu. Við sækjum ekki bíla.</p>
-        <p style="margin-top:0.9rem;font-weight:800;font-size:1.05rem;letter-spacing:0.02em;text-transform:uppercase;color:var(--blue)">BÆTA VIÐ BÍLFLUTNINGSÞJÓNUSTUM??</p>
+        <details class="transport">
+          <summary data-en="See car transport services">Sjá bílaflutningaþjónustu</summary>
+          <div class="transport-list">
+            <div class="transport-co">
+              <strong>Bílaflutningar</strong>
+              <a href="tel:8228171">822 8171</a>
+            </div>
+          </div>
+        </details>
       </div>
       <div class="step reveal delay-2">
         <div class="step-num">3</div>
