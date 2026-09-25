@@ -1,0 +1,19 @@
+# Permanent redirects for URLs used before and immediately after the 2026 redesign.
+# Keep these rules so bookmarks, external links and search engines reach the
+# closest matching content instead of the custom 404 page.
+/index.html / 301
+/bilaforgun.html /bilaforgun 301
+/um-furu.html /um-furu 301
+/furuflis.html /furuflis 301
+/umhverfisstefna.html /umhverfisstefna 301
+
+/verkefnin /#thjonusta 301
+/verkefnin/ /#thjonusta 301
+/thjonusta /#thjonusta 301
+/thjonusta/ /#thjonusta 301
+/malmar /#malmar 301
+/malmar/ /#malmar 301
+/hafa-samband /#samband 301
+/hafa-samband/ /#samband 301
+/umhver /umhverfisstefna 301
+/umhver/ /umhverfisstefna 301
