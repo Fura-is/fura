@@ -1,7 +1,7 @@
 /* Fura — Google Analytics með cookie-samþykki (opt-in, GDPR-vænt)
    GA hleðst AÐEINS ef notandinn samþykkir. Valið er munað í localStorage. */
 (function () {
-  var GA_ID = 'G-4Z2JSQDWMC';
+  var GA_ID = 'G-PBCK2DB9V4';
   var KEY = 'fura-cookie-consent';
 
   function loadGA() {
