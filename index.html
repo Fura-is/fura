@@ -1684,7 +1684,7 @@
   </style>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
-  <link rel="preload" as="image" href="hero-forsida.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="hero-tilbod.jpg" fetchpriority="high">
   <link rel="preload" as="font" type="font/woff2" href="fonts/Onest-Variable.woff2" crossorigin>
   <script src="analytics.js" defer></script>
 </head>
@@ -1727,6 +1727,7 @@
 </nav>
 
 <!-- HERO -->
+<!-- ===== ORIGINAL HERO (geymt — til að endurheimta: eyða PROMO-blokkinni að neðan og af-comment-a þennan) =====
 <section class="hero" id="top">
   <div class="hero-bg"></div>
   <div class="hero-content">
@@ -1734,6 +1735,35 @@
     <a href="#hafa-samband" class="btn-blue" data-en="Contact us">Hafa samband</a>
   </div>
 </section>
+===== END ORIGINAL HERO ===== -->
+
+<!-- ===== TÍMABUNDINN TILBOÐS-HERO (40.000 kr — gildir fram að áramótum). Fjarlægja þessa blokk + af-comment-a upprunalega heroinn til að taka niður. ===== -->
+<style>
+  .promo-hero { background:#0036d4; width:100%; display:flex; justify-content:center; margin-top:80px; }
+  .promo-wrap { position:relative; width:100%; max-width:1400px; container-type:inline-size; line-height:0; }
+  .promo-wrap img { width:100%; height:auto; display:block; }
+  .promo-btn-pos { position:absolute; left:27.4%; top:54.8%; transform:translate(-50%,-50%); }
+  .promo-btn {
+    display:inline-block; background:#fff; color:#15307a; font-weight:800; text-decoration:none;
+    font-size:2.3cqw; padding:1.7cqw 2.9cqw; border-radius:999px; white-space:nowrap;
+    box-shadow:0 0.6cqw 1.8cqw rgba(0,0,0,0.3); animation:promobob 1.6s ease-in-out infinite;
+  }
+  .promo-btn:hover { background:#eef3ff; }
+  @keyframes promobob {
+    0%,55%,100% { transform:translateY(0); }
+    15% { transform:translateY(-46%); }
+    32% { transform:translateY(0); }
+    44% { transform:translateY(-18%); }
+  }
+  @media (prefers-reduced-motion:reduce) { .promo-btn { animation:none; } }
+</style>
+<section class="promo-hero" id="top">
+  <div class="promo-wrap">
+    <img src="hero-tilbod.jpg" alt="Viltu 40.000 kr. fyrir ónýta bílinn þinn? Tilboðið gildir fram að áramótum." width="1672" height="941" fetchpriority="high">
+    <div class="promo-btn-pos"><a class="promo-btn" href="bilaforgun.html">Smelltu hér til að sjá meira</a></div>
+  </div>
+</section>
+<!-- ===== END TILBOÐS-HERO ===== -->
 
 
 <!-- THJONUSTA: TVÆR LEIÐIR -->
