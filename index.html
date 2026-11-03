@@ -1684,7 +1684,7 @@
   </style>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
-  <link rel="preload" as="image" href="hero-tilbod.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="car-promo.png" fetchpriority="high">
   <link rel="preload" as="font" type="font/woff2" href="fonts/Onest-Variable.woff2" crossorigin>
   <script src="analytics.js" defer></script>
 </head>
@@ -1737,30 +1737,55 @@
 </section>
 ===== END ORIGINAL HERO ===== -->
 
-<!-- ===== TÍMABUNDINN TILBOÐS-HERO (40.000 kr — gildir fram að áramótum). Fjarlægja þessa blokk + af-comment-a upprunalega heroinn til að taka niður. ===== -->
+<!-- ===== TÍMABUNDINN TILBOÐS-HERO (40.000 kr — gildir fram að áramótum). Sveigjanlegur: tölva/sími + IS/EN. Fjarlægja þessa blokk + af-comment-a upprunalega heroinn til að taka niður. ===== -->
 <style>
-  .promo-hero { background:#0036d4; width:100%; display:flex; justify-content:center; margin-top:80px; }
-  .promo-wrap { position:relative; width:100%; max-width:1400px; container-type:inline-size; line-height:0; }
-  .promo-wrap img { width:100%; height:auto; display:block; }
-  .promo-btn-pos { position:absolute; left:27.4%; top:54.8%; transform:translate(-50%,-50%); }
-  .promo-btn {
-    display:inline-block; background:#fff; color:#15307a; font-weight:800; text-decoration:none;
-    font-size:2.3cqw; padding:1.7cqw 2.9cqw; border-radius:999px; white-space:nowrap;
-    box-shadow:0 0.6cqw 1.8cqw rgba(0,0,0,0.3); animation:promobob 1.6s ease-in-out infinite;
+  .promo { background:#0036d4; width:100%; padding-top:80px; }
+  .promo-inner {
+    max-width:1180px; margin:0 auto; padding:2.4rem 7% 2.8rem;
+    display:grid; gap:1rem; align-items:center; justify-items:center; text-align:center;
+    grid-template-columns:1fr;
+    grid-template-areas:"head" "sub" "car" "btn" "logo";
   }
+  .promo-head { grid-area:head; color:#fff; font-weight:800; line-height:1.08; letter-spacing:-0.02em;
+    font-size:clamp(2rem,8.2vw,3.1rem); margin:0; }
+  .promo-sub  { grid-area:sub; color:#fff; font-weight:700; margin:0;
+    font-size:clamp(1.15rem,5.2vw,1.5rem); }               /* STÓRT í síma, fyrir ofan bílinn */
+  .promo-car  { grid-area:car; width:100%; max-width:480px; height:auto; display:block; margin:0.3rem 0 0.4rem;
+    filter:drop-shadow(0 16px 22px rgba(0,0,0,0.28)); }
+  .promo-btn  { grid-area:btn; display:inline-block; background:#fff; color:#15307a; font-weight:800;
+    text-decoration:none; font-size:clamp(1rem,4.6vw,1.2rem); padding:0.85em 1.6em; border-radius:999px;
+    box-shadow:0 8px 22px rgba(0,0,0,0.28); animation:promobob 1.6s ease-in-out infinite; }
   .promo-btn:hover { background:#eef3ff; }
+  .promo-logo { grid-area:logo; color:#fff; font-weight:800; letter-spacing:0.04em; line-height:1; margin-top:0.5rem; font-size:clamp(1.5rem,6vw,2rem); }
   @keyframes promobob {
     0%,55%,100% { transform:translateY(0); }
-    15% { transform:translateY(-46%); }
+    15% { transform:translateY(-30%); }
     32% { transform:translateY(0); }
-    44% { transform:translateY(-18%); }
+    44% { transform:translateY(-12%); }
   }
   @media (prefers-reduced-motion:reduce) { .promo-btn { animation:none; } }
+  /* TÖLVA: breitt — texti vinstra megin, bíll hægra megin */
+  @media (min-width:760px) {
+    .promo-inner {
+      grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);
+      grid-template-areas:"head car" "btn car" "sub car" "logo car";
+      gap:0.55rem 5%; padding:3rem 7%;
+      justify-items:start; text-align:left;
+    }
+    .promo-head { font-size:clamp(2.4rem,4.2vw,3.7rem); }
+    .promo-sub  { font-size:clamp(1rem,1.45vw,1.15rem); font-weight:600; }   /* smátt á tölvu, undir takka */
+    .promo-car  { grid-area:car; align-self:center; max-width:none; margin:0; }
+    .promo-btn  { margin:0.7rem 0; }
+    .promo-logo { margin-top:0.9rem; }
+  }
 </style>
-<section class="promo-hero" id="top">
-  <div class="promo-wrap">
-    <img src="hero-tilbod.jpg" alt="Viltu 40.000 kr. fyrir ónýta bílinn þinn? Tilboðið gildir fram að áramótum." width="1672" height="941" fetchpriority="high">
-    <div class="promo-btn-pos"><a class="promo-btn" href="bilaforgun.html">Smelltu hér til að sjá meira</a></div>
+<section class="promo" id="top">
+  <div class="promo-inner">
+    <h1 class="promo-head" data-en="Want 40,000&nbsp;ISK for your scrap car?">Viltu 40.000&nbsp;kr. fyrir ónýta bílinn þinn?</h1>
+    <a class="promo-btn" href="bilaforgun.html" data-en="Click here to see more">Smelltu hér til að sjá meira</a>
+    <p class="promo-sub" data-en="Offer valid until the New Year">Tilboðið gildir fram að áramótum</p>
+    <img class="promo-car" src="car-promo.png" alt="" width="693" height="420" fetchpriority="high">
+    <div class="promo-logo">FURA</div>
   </div>
 </section>
 <!-- ===== END TILBOÐS-HERO ===== -->
