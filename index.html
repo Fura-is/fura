@@ -244,6 +244,38 @@
     .lang-opt.active { color: #fff; }
     .lang-sep { color: rgba(255,255,255,0.3); font-size: 0.85rem; line-height: 1; }
 
+    /* Tungumála-fellilisti (IS / EN / PL, hvert á sínu máli) */
+    .lang-dd { position: relative; flex-shrink: 0; }
+    .lang-dd-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: transparent; border: 1px solid rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.9); font-family: inherit; font-size: 0.9rem;
+      font-weight: 600; letter-spacing: 0.01em; line-height: 1;
+      padding: 0.5rem 0.75rem; border-radius: 6px; cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .lang-dd-btn:hover { border-color: rgba(255,255,255,0.42); color: #fff; }
+    .lang-dd-caret { transition: transform 0.2s; margin-top: 1px; }
+    .lang-dd.open .lang-dd-caret { transform: rotate(180deg); }
+    .lang-dd-menu {
+      position: absolute; top: calc(100% + 8px); right: 0;
+      min-width: 100%; list-style: none; margin: 0; padding: 0.3rem;
+      background: #1c1713; border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 8px; box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+      display: none; z-index: 200;
+    }
+    .lang-dd.open .lang-dd-menu { display: block; }
+    .lang-dd-menu li { margin: 0; }
+    .lang-dd-menu .lang-opt {
+      display: block; width: 100%; text-align: left; white-space: nowrap;
+      background: transparent; border: none; color: rgba(255,255,255,0.75);
+      font-family: inherit; font-size: 0.92rem; font-weight: 600;
+      padding: 0.5rem 0.95rem; border-radius: 5px; cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-dd-menu .lang-opt:hover { background: rgba(255,255,255,0.08); color: #fff; }
+    .lang-dd-menu .lang-opt.active { color: #fff; background: rgba(91,141,239,0.22); }
+
     /* Hamburger */
     .nav-burger {
       display: none;
@@ -1693,8 +1725,8 @@
       .metals,
       .bilaforgun-wrap,
       .why {
-        padding-left: max(5%, calc((100% - 1200px) / 2));
-        padding-right: max(5%, calc((100% - 1200px) / 2));
+        padding-left: max(5%, calc((100% - 1500px) / 2));
+        padding-right: max(5%, calc((100% - 1500px) / 2));
       }
     }
 
@@ -1702,8 +1734,8 @@
     @media (min-width: 1500px) {
       .nav-top {
         height: 96px;
-        padding-left: max(5%, calc((100% - 1400px) / 2));
-        padding-right: max(5%, calc((100% - 1400px) / 2));
+        padding-left: max(5%, calc((100% - 1500px) / 2));
+        padding-right: max(5%, calc((100% - 1500px) / 2));
       }
       .nav-logo img { height: 34px; }
       .nav-logo-sub { font-size: 0.85rem; }
@@ -1712,7 +1744,54 @@
       .nav-links .nav-ff img { height: 38px; }
       .nav-cta { font-size: 1.15rem; padding: 0.55rem 1.4rem; }
       .nav-right { gap: 1.9rem; }
-      .lang-opt, .lang-sep { font-size: 1.1rem; }
+      .lang-dd-btn { font-size: 1.05rem; padding: 0.6rem 0.9rem; }
+      .lang-dd-menu .lang-opt { font-size: 1.02rem; }
+    }
+
+    /* ── Mjög stór skjár (≈1700px+): fyllum skjáinn — breiðara efni, stærra letur/kassar, hærri hlutar ── */
+    @media (min-width: 1700px) {
+      html { font-size: 112.5%; }                         /* 18px grunnur → allt rem-byggt stækkar */
+      .nav-top,
+      .how, .metals, .bilaforgun-wrap, .why {
+        padding-left: max(4%, calc((100% - 1680px) / 2));
+        padding-right: max(4%, calc((100% - 1680px) / 2));
+      }
+      .how      { padding-top: 6.5rem; padding-bottom: 6.5rem; }
+      .metals   { padding-top: 5.5rem; padding-bottom: 6.5rem; }
+      .why      { padding-top: 6.5rem; padding-bottom: 6.5rem; }
+      .bilaforgun-wrap { padding-top: 5rem; padding-bottom: 8rem; }
+      .promo-inner { max-width: 1680px; padding-top: 6rem; padding-bottom: 6rem; }
+      /* breikka innri kassana svo þeir fylli, ekki litlir í miðjunni */
+      .metal-display { max-width: 1160px; }
+      .path-contacts { max-width: 1160px; }
+      .services-wrap { max-width: 1360px; }
+      /* hærri, matarmeiri kassar */
+      .paths { gap: 2.25rem; }
+      .path-card { padding: 3.75rem 3rem; min-height: 360px; display: flex; flex-direction: column; }
+      .path-card .path-illo { margin-top: auto; }
+      .path-contact { padding: 2.75rem 2.5rem; }
+      .why-card { padding: 3.5rem 2.5rem; min-height: 320px; }
+      .metal-image { min-height: 480px; }
+      .metal-text { padding: 3.5rem 3rem; }
+      .coverage-map { max-width: 760px; }
+    }
+
+    /* ── Risaskjár (≈2300px+): enn breiðara og stærra ── */
+    @media (min-width: 2300px) {
+      html { font-size: 125%; }                           /* 20px grunnur */
+      .nav-top,
+      .how, .metals, .bilaforgun-wrap, .why {
+        padding-left: max(4%, calc((100% - 2040px) / 2));
+        padding-right: max(4%, calc((100% - 2040px) / 2));
+      }
+      .promo-inner { max-width: 2040px; }
+      .metal-display { max-width: 1360px; }
+      .path-contacts { max-width: 1360px; }
+      .services-wrap { max-width: 1560px; }
+      .path-card { min-height: 420px; }
+      .why-card { min-height: 380px; }
+      .metal-image { min-height: 560px; }
+      .coverage-map { max-width: 900px; }
     }
   </style>
   <link rel="icon" type="image/png" href="favicon.png">
@@ -1731,17 +1810,23 @@
     </a>
     <div class="nav-right">
     <ul class="nav-links">
-      <li><a href="#thjonusta" data-spy="thjonusta" data-en="Services">Þjónusta</a></li>
-      <li><a href="#malmar" data-spy="malmar" data-en="Metals">Málmar</a></li>
-      <li><a href="/bilaforgun" data-en="Car recycling">Bílaförgun</a></li>
-      <li><a href="/um-furu" data-spy="afhverju-fura" data-en="About Fura">Um Furu</a></li>
+      <li><a href="#thjonusta" data-spy="thjonusta" data-en="Services" data-pl="Usługi">Þjónusta</a></li>
+      <li><a href="#malmar" data-spy="malmar" data-en="Metals" data-pl="Metale">Málmar</a></li>
+      <li><a href="/bilaforgun" data-en="Car recycling" data-pl="Złomowanie aut">Bílaförgun</a></li>
+      <li><a href="/um-furu" data-spy="afhverju-fura" data-en="About Fura" data-pl="O Furze">Um Furu</a></li>
       <li><a href="/furuflis" class="nav-ff"><img src="furuflis-logo-color.png" alt="Furuflís" /></a></li>
-      <li><a href="#samband" class="nav-cta" data-en="Contact">Hafa samband</a></li>
+      <li><a href="#samband" class="nav-cta" data-en="Contact" data-pl="Kontakt">Hafa samband</a></li>
     </ul>
-    <div class="lang-switch" aria-label="Tungumál / Language">
-      <button type="button" class="lang-opt" data-lang="is">IS</button>
-      <span class="lang-sep" aria-hidden="true">/</span>
-      <button type="button" class="lang-opt" data-lang="en">EN</button>
+    <div class="lang-dd" aria-label="Tungumál / Language">
+      <button type="button" class="lang-dd-btn" aria-haspopup="true" aria-expanded="false">
+        <span class="lang-dd-cur">Íslenska</span>
+        <svg class="lang-dd-caret" width="11" height="7" viewBox="0 0 11 7" fill="none" aria-hidden="true"><path d="M1 1l4.5 4.5L10 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <ul class="lang-dd-menu" role="menu">
+        <li><button type="button" class="lang-opt" data-lang="is">Íslenska</button></li>
+        <li><button type="button" class="lang-opt" data-lang="en">English</button></li>
+        <li><button type="button" class="lang-opt" data-lang="pl">Polski</button></li>
+      </ul>
     </div>
     <button class="nav-burger" id="burger" aria-label="Valmynd">
       <span></span><span></span><span></span>
@@ -1750,12 +1835,12 @@
   </div>
   <!-- Mobile drawer -->
   <div class="nav-mobile" id="mobile-menu">
-    <a href="#thjonusta" data-en="Services">Þjónusta</a>
-    <a href="#malmar" data-en="Metals">Málmar</a>
-    <a href="/bilaforgun" data-en="Car recycling">Bílaförgun</a>
-    <a href="/um-furu" data-en="About Fura">Um Furu</a>
+    <a href="#thjonusta" data-en="Services" data-pl="Usługi">Þjónusta</a>
+    <a href="#malmar" data-en="Metals" data-pl="Metale">Málmar</a>
+    <a href="/bilaforgun" data-en="Car recycling" data-pl="Złomowanie aut">Bílaförgun</a>
+    <a href="/um-furu" data-en="About Fura" data-pl="O Furze">Um Furu</a>
     <a href="/furuflis" class="nav-ff-mobile"><img src="furuflis-logo-color.png" alt="Furuflís" /></a>
-    <a href="#samband" class="nav-cta" data-en="Contact">Hafa samband</a>
+    <a href="#samband" class="nav-cta" data-en="Contact" data-pl="Kontakt">Hafa samband</a>
   </div>
 </nav>
 
@@ -1764,8 +1849,8 @@
 <section class="hero" id="top">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <h1 data-en="Get value for<br><em>your metal</em>">Láttu málminn<br><em>borga sig</em></h1>
-    <a href="#hafa-samband" class="btn-blue" data-en="Contact us">Hafa samband</a>
+    <h1 data-en="Get value for<br><em>your metal</em>" data-pl="Zyskaj na<br><em>swoim metalu</em>">Láttu málminn<br><em>borga sig</em></h1>
+    <a href="#hafa-samband" class="btn-blue" data-en="Contact us" data-pl="Skontaktuj się">Hafa samband</a>
   </div>
 </section>
 ===== END ORIGINAL HERO ===== -->
@@ -1815,7 +1900,7 @@
   @media (min-width:1500px) {
     .promo { padding-top:96px; }               /* clear-a hærra nav */
     .promo-inner {
-      max-width:1340px; padding:5rem 7% 5.2rem; gap:0.9rem 6%;
+      max-width:1500px; padding:5rem 7% 5.2rem; gap:0.9rem 6%;
     }
     .promo-head { font-size:clamp(3.4rem,3.6vw,4.4rem); }
     .promo-sub  { font-size:1.55rem; }
@@ -1825,9 +1910,9 @@
 </style>
 <section class="promo" id="top">
   <div class="promo-inner">
-    <h1 class="promo-head" data-en="Want 40,000&nbsp;ISK for scrapping your car?">Viltu 40.000&nbsp;kr. fyrir að farga bílnum þínum?</h1>
-    <a class="promo-btn" href="bilaforgun.html" data-en="Click here to see more">Smelltu hér til að sjá meira</a>
-    <p class="promo-sub" data-en="Offer valid until the New Year">Tilboðið gildir fram að áramótum</p>
+    <h1 class="promo-head" data-en="Want 40,000&nbsp;ISK for scrapping your car?" data-pl="Chcesz 40&nbsp;000&nbsp;ISK za złomowanie swojego auta?">Viltu 40.000&nbsp;kr. fyrir að farga bílnum þínum?</h1>
+    <a class="promo-btn" href="bilaforgun.html" data-en="Click here to see more" data-pl="Kliknij tutaj, aby zobaczyć więcej">Smelltu hér til að sjá meira</a>
+    <p class="promo-sub" data-en="Offer valid until the New Year" data-pl="Oferta ważna do Nowego Roku">Tilboðið gildir fram að áramótum</p>
     <img class="promo-car" src="car-promo.png" alt="" width="693" height="420" fetchpriority="high">
     <img class="promo-logo" src="fura-wordmark.png" alt="Fura" width="246" height="72">
   </div>
@@ -1837,16 +1922,16 @@
 
 <!-- THJONUSTA: TVÆR LEIÐIR -->
 <section class="how" id="thjonusta">
-  <div class="section-label" data-en="Services">Þjónusta</div>
+  <div class="section-label" data-en="Services" data-pl="Usługi">Þjónusta</div>
   <div class="rule"></div>
-  <h2 class="section-title reveal" data-en="Two ways to recycle with Fura">Tvær leiðir til endurvinnslu</h2>
+  <h2 class="section-title reveal" data-en="Two ways to recycle with Fura" data-pl="Dwa sposoby na recykling z Furą">Tvær leiðir til endurvinnslu</h2>
   <div class="paths">
 
     <div class="path-card path-pickup">
       <div class="path-content">
-        <div class="path-eyebrow" data-en="Larger projects">Stærri verkefni</div>
-        <h3 class="path-title" data-en="Collection Service">Við sækjum til þín</h3>
-        <p class="path-body" data-en="We have containers for any project. Get in touch and we'll find the right size for you.">Við eigum ílát fyrir hvaða verkefni sem er. Hafðu samband og við finnum rétta stærð fyrir þig.</p>
+        <div class="path-eyebrow" data-en="Larger projects" data-pl="Większe projekty">Stærri verkefni</div>
+        <h3 class="path-title" data-en="Collection Service" data-pl="Odbiór u klienta">Við sækjum til þín</h3>
+        <p class="path-body" data-en="We have containers for any project. Get in touch and we'll find the right size for you." data-pl="Mamy kontenery do każdego projektu. Skontaktuj się, a dobierzemy odpowiedni rozmiar.">Við eigum ílát fyrir hvaða verkefni sem er. Hafðu samband og við finnum rétta stærð fyrir þig.</p>
       </div>
       <div class="path-illos" aria-label="Ílát sem við bjóðum">
         <div class="path-illo path-illo-kar">
@@ -1865,7 +1950,7 @@
             <text x="30" y="30.5" text-anchor="middle" fill="currentColor" stroke="none" font-size="12" font-weight="800" style="font-family:'Onest',-apple-system,sans-serif;letter-spacing:0.3px">Kar</text>
           </svg>
         </div>
-        <span class="path-illo-or" data-en="or">eða</span>
+        <span class="path-illo-or" data-en="or" data-pl="lub">eða</span>
         <div class="path-illo path-illo-gamur">
           <svg viewBox="0 0 132 46" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <!-- Cab (faces left, tall Scania-style front) -->
@@ -1888,10 +1973,10 @@
     </div>
 
     <div class="path-card path-dropoff">
-      <div class="path-eyebrow" data-en="Smaller amounts">Minna magn</div>
-      <h3 class="path-title" data-en="Drop-off Service">Komdu til okkar</h3>
-      <p class="path-body" data-en="Bring the metals to our station in Hafnarfjörður or in Akureyri. We weigh them and pay you for the metals you bring in.">Komdu með málmana á stöðina okkar í Hafnarfirði eða á Akureyri. Við vigtum og sjáum um að greiða þér fyrir málmana sem þú kemur með.</p>
-      <a href="#samband" class="path-link" data-en="See locations →">Sjá staðsetningar →</a>
+      <div class="path-eyebrow" data-en="Smaller amounts" data-pl="Mniejsze ilości">Minna magn</div>
+      <h3 class="path-title" data-en="Drop-off Service" data-pl="Dostawa do nas">Komdu til okkar</h3>
+      <p class="path-body" data-en="Bring the metals to our station in Hafnarfjörður or in Akureyri. We weigh them and pay you for the metals you bring in." data-pl="Przywieź metale do naszego punktu w Hafnarfjörður lub Akureyri. Zważymy je i zapłacimy za przywieziony metal.">Komdu með málmana á stöðina okkar í Hafnarfirði eða á Akureyri. Við vigtum og sjáum um að greiða þér fyrir málmana sem þú kemur með.</p>
+      <a href="#samband" class="path-link" data-en="See locations →" data-pl="Zobacz lokalizacje →">Sjá staðsetningar →</a>
       <svg class="path-icon" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M 30 6 C 22 6 16 12 16 20 C 16 30 30 50 30 50 C 30 50 44 30 44 20 C 44 12 38 6 30 6 Z"/>
         <circle cx="30" cy="20" r="5"/>
@@ -1900,11 +1985,11 @@
 
   </div>
 
-  <p class="path-help" id="hafa-samband" data-en="Not sure which suits you? Get in touch:">Ekki viss hvort hentar? Hafðu samband:</p>
+  <p class="path-help" id="hafa-samband" data-en="Not sure which suits you? Get in touch:" data-pl="Nie wiesz, co wybrać? Skontaktuj się:">Ekki viss hvort hentar? Hafðu samband:</p>
 
   <div class="path-contacts">
     <div class="path-contact">
-      <div class="path-contact-label" data-en="Capital Region">Höfuðborgarsvæðið</div>
+      <div class="path-contact-label" data-en="Capital Region" data-pl="Region stołeczny">Höfuðborgarsvæðið</div>
       <div class="path-contact-links">
         <a href="tel:5653557"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>565 3557</a>
         <a href="mailto:fura@fura.is"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>fura@fura.is</a>
@@ -2238,99 +2323,99 @@ c-38 -39 -41 -39 -90 -33 -28 4 -61 13 -73 21 -19 13 -25 12 -56 -7 -34 -21
           <path d="M29.0614 0V15.465C29.0614 17.7365 29.432 19.3474 30.2858 20.3945C31.1396 21.4416 32.6538 21.9088 34.9253 21.9088C37.1 21.9088 38.6143 21.4416 39.4681 20.3945C40.3219 19.3474 40.6924 17.7365 40.6924 15.465V0H46.0891V15.6583C46.0891 17.2693 45.9924 18.6869 45.7991 19.8307C45.6058 20.9744 45.1386 21.9249 44.5748 22.5854C43.5277 23.8258 42.2067 24.7602 40.5958 25.3401C38.9848 25.9039 37.1 26.1939 34.8286 26.1939C32.5572 26.1939 30.6724 25.9039 29.0614 25.3401C27.4505 24.7763 26.1295 23.8258 25.0824 22.5854C24.5186 21.9249 24.132 20.9744 23.9548 19.8307C23.7615 18.6869 23.6648 17.2693 23.6648 15.6583V0H29.0614Z"/>
       </svg>
     </div>
-    <p class="coverage-caption" data-en="Based in the <strong>capital area and Akureyri</strong>, we serve <strong>every region of the country</strong>.">Við erum á <strong>höfuðborgarsvæðinu og Akureyri</strong> og þjónustum <strong>alla landshluta</strong>.</p>
+    <p class="coverage-caption" data-en="Based in the <strong>capital area and Akureyri</strong>, we serve <strong>every region of the country</strong>." data-pl="Działamy w <strong>regionie stołecznym i Akureyri</strong> i obsługujemy <strong>cały kraj</strong>.">Við erum á <strong>höfuðborgarsvæðinu og Akureyri</strong> og þjónustum <strong>alla landshluta</strong>.</p>
   </div>
 </section>
 
 <!-- METALS -->
 <section class="metals" id="malmar">
-  <div class="section-label" data-en="Metals">Málmar</div>
+  <div class="section-label" data-en="Metals" data-pl="Metale">Málmar</div>
   <div class="rule"></div>
-  <h2 class="section-title reveal" data-en="What we recycle">Það sem við endurnýtum</h2>
-  <p class="metals-sub" data-en='We pay for most types of metal. Prices depend on the type, purity and quantity of the material. <a href="mailto:afgreidsla@fura.is">Get in touch</a> for a valuation.'>Við greiðum fyrir flestar tegundir málma. Verð ræðst af tegund, hreinleika og magni efnisins. <a href="mailto:afgreidsla@fura.is">Hafðu samband</a> og fáðu verðtilboð.</p>
+  <h2 class="section-title reveal" data-en="What we recycle" data-pl="Co poddajemy recyklingowi">Það sem við endurnýtum</h2>
+  <p class="metals-sub" data-en='We pay for most types of metal. Prices depend on the type, purity and quantity of the material. <a href="mailto:afgreidsla@fura.is">Get in touch</a> for a valuation.' data-pl='Płacimy za większość rodzajów metali. Ceny zależą od rodzaju, czystości i ilości materiału. <a href="mailto:afgreidsla@fura.is">Skontaktuj się</a>, aby otrzymać wycenę.'>Við greiðum fyrir flestar tegundir málma. Verð ræðst af tegund, hreinleika og magni efnisins. <a href="mailto:afgreidsla@fura.is">Hafðu samband</a> og fáðu verðtilboð.</p>
   <div class="metals-chips">
-    <button class="chip active" data-target="jarn" data-en="Iron">Járn</button>
-    <button class="chip" data-target="al" data-en="Aluminium">Ál</button>
-    <button class="chip" data-target="kopar" data-en="Copper">Kopar</button>
-    <button class="chip" data-target="messing" data-en="Brass">Messing</button>
-    <button class="chip" data-target="bly" data-en="Lead">Blý</button>
-    <button class="chip" data-target="rydfritt" data-en="Stainless steel">Ryðfrítt stál</button>
-    <button class="chip" data-target="alfelgur" data-en="Alloy wheels">Álfelgur</button>
-    <button class="chip" data-target="kaplar" data-en="Cables">Kaplar</button>
-    <button class="chip" data-target="rafgeymar" data-en="Batteries">Rafgeymar</button>
+    <button class="chip active" data-target="jarn" data-en="Iron" data-pl="Żelazo">Járn</button>
+    <button class="chip" data-target="al" data-en="Aluminium" data-pl="Aluminium">Ál</button>
+    <button class="chip" data-target="kopar" data-en="Copper" data-pl="Miedź">Kopar</button>
+    <button class="chip" data-target="messing" data-en="Brass" data-pl="Mosiądz">Messing</button>
+    <button class="chip" data-target="bly" data-en="Lead" data-pl="Ołów">Blý</button>
+    <button class="chip" data-target="rydfritt" data-en="Stainless steel" data-pl="Stal nierdzewna">Ryðfrítt stál</button>
+    <button class="chip" data-target="alfelgur" data-en="Alloy wheels" data-pl="Felgi aluminiowe">Álfelgur</button>
+    <button class="chip" data-target="kaplar" data-en="Cables" data-pl="Kable">Kaplar</button>
+    <button class="chip" data-target="rafgeymar" data-en="Batteries" data-pl="Akumulatory">Rafgeymar</button>
   </div>
 
   <div class="metal-display">
     <div class="metal-pane active" data-pane="jarn">
-      <button type="button" class="metal-summary" data-en="Iron" aria-expanded="false">Járn</button>
+      <button type="button" class="metal-summary" data-en="Iron" data-pl="Żelazo" aria-expanded="false">Járn</button>
       <div class="metal-image" style="background-image: url('jarn.jpg?v=2');"></div>
       <div class="metal-text">
-        <h3 data-en="Iron">Járn</h3>
-        <p data-en="Iron is one of the most widely used building materials in the world. Unlike aluminium and stainless steel, it rusts easily in moisture and weather if it is not protected with a surface treatment. It is also magnetic, unlike aluminium, which makes them easy to tell apart.">Járn er eitt mest notaða byggingarefni í heiminum. Ólíkt áli og ryðfríu stáli ryðgar það auðveldlega í raka og veðri sé það ekki varið með yfirborðsmeðferð. Það er líka segulmagnað, ólíkt áli, sem auðveldar að greina þau í sundur.</p>
+        <h3 data-en="Iron" data-pl="Żelazo">Járn</h3>
+        <p data-en="Iron is one of the most widely used building materials in the world. Unlike aluminium and stainless steel, it rusts easily in moisture and weather if it is not protected with a surface treatment. It is also magnetic, unlike aluminium, which makes them easy to tell apart." data-pl="Żelazo to jeden z najczęściej używanych materiałów budowlanych na świecie. W przeciwieństwie do aluminium i stali nierdzewnej łatwo rdzewieje w wilgoci i na powietrzu, jeśli nie jest zabezpieczone powłoką ochronną. Jest też magnetyczne — inaczej niż aluminium — dzięki czemu łatwo je odróżnić.">Járn er eitt mest notaða byggingarefni í heiminum. Ólíkt áli og ryðfríu stáli ryðgar það auðveldlega í raka og veðri sé það ekki varið með yfirborðsmeðferð. Það er líka segulmagnað, ólíkt áli, sem auðveldar að greina þau í sundur.</p>
       </div>
     </div>
     <div class="metal-pane" data-pane="al">
-      <button type="button" class="metal-summary" data-en="Aluminium" aria-expanded="false">Ál</button>
+      <button type="button" class="metal-summary" data-en="Aluminium" data-pl="Aluminium" aria-expanded="false">Ál</button>
       <div class="metal-image" style="background-image: url('al.jpg?v=2');"></div>
       <div class="metal-text">
-        <h3 data-en="Aluminium">Ál</h3>
-        <p data-en="Aluminium is a metal commonly found in windows, doors, vehicles and packaging. Unlike iron, aluminium does not rust and weighs far less.">Ál er málmur sem er algengur í gluggum, hurðum, farartækjum og umbúðum. Ólíkt járni ryðgar ál ekki og vegur mun minna.</p>
+        <h3 data-en="Aluminium" data-pl="Aluminium">Ál</h3>
+        <p data-en="Aluminium is a metal commonly found in windows, doors, vehicles and packaging. Unlike iron, aluminium does not rust and weighs far less." data-pl="Aluminium to metal powszechnie spotykany w oknach, drzwiach, pojazdach i opakowaniach. W przeciwieństwie do żelaza nie rdzewieje i waży znacznie mniej.">Ál er málmur sem er algengur í gluggum, hurðum, farartækjum og umbúðum. Ólíkt járni ryðgar ál ekki og vegur mun minna.</p>
       </div>
     </div>
     <div class="metal-pane" data-pane="kopar">
-      <button type="button" class="metal-summary" data-en="Copper" aria-expanded="false">Kopar</button>
+      <button type="button" class="metal-summary" data-en="Copper" data-pl="Miedź" aria-expanded="false">Kopar</button>
       <div class="metal-image" style="background-image: url('kopar.jpg?v=2');"></div>
       <div class="metal-text">
-        <h3 data-en="Copper">Kopar</h3>
-        <p data-en="Copper is widely used in electrical systems, cables and connectors. Its reddish color makes it easy to tell apart from other metals.">Kopar er mikið notaður í rafkerfum, köplum og tengingum. Rauðleitur litur hans gerir hann auðþekkjanlegan frá öðrum málmum.</p>
+        <h3 data-en="Copper" data-pl="Miedź">Kopar</h3>
+        <p data-en="Copper is widely used in electrical systems, cables and connectors. Its reddish color makes it easy to tell apart from other metals." data-pl="Miedź jest szeroko stosowana w instalacjach elektrycznych, kablach i złączach. Jej czerwonawy kolor sprawia, że łatwo odróżnić ją od innych metali.">Kopar er mikið notaður í rafkerfum, köplum og tengingum. Rauðleitur litur hans gerir hann auðþekkjanlegan frá öðrum málmum.</p>
       </div>
     </div>
     <div class="metal-pane" data-pane="messing">
-      <button type="button" class="metal-summary" data-en="Brass" aria-expanded="false">Messing</button>
+      <button type="button" class="metal-summary" data-en="Brass" data-pl="Mosiądz" aria-expanded="false">Messing</button>
       <div class="metal-image" style="background-image: url('messing.jpg?v=2');"></div>
       <div class="metal-text">
-        <h3 data-en="Brass">Messing</h3>
-        <p data-en="Brass is an alloy of copper and zinc, widely used in plumbing taps, pipe fittings, hardware, and musical instruments. Its bright yellow gold color makes it easy to spot.">Messing er málmblanda úr kopar og sinki, mikið notuð í krana, tengi, skreytingar og hljóðfæri. Við tökum við messingu til endurvinnslu.</p>
+        <h3 data-en="Brass" data-pl="Mosiądz">Messing</h3>
+        <p data-en="Brass is an alloy of copper and zinc, widely used in plumbing taps, pipe fittings, hardware, and musical instruments. Its bright yellow gold color makes it easy to spot." data-pl="Mosiądz to stop miedzi i cynku, szeroko stosowany w armaturze hydraulicznej, złączkach rur, okuciach i instrumentach muzycznych. Jego jasnożółty, złoty kolor sprawia, że łatwo go rozpoznać.">Messing er málmblanda úr kopar og sinki, mikið notuð í krana, tengi, skreytingar og hljóðfæri. Við tökum við messingu til endurvinnslu.</p>
       </div>
     </div>
     <div class="metal-pane" data-pane="bly">
-      <button type="button" class="metal-summary" data-en="Lead" aria-expanded="false">Blý</button>
+      <button type="button" class="metal-summary" data-en="Lead" data-pl="Ołów" aria-expanded="false">Blý</button>
       <div class="metal-image" style="background-image: url('bly.jpg?v=3');"></div>
       <div class="metal-text">
-        <h3 data-en="Lead">Blý</h3>
-        <p data-en="Lead is a heavy metal that must be handled correctly. We accept lead and take care of safe, environmentally friendly recycling.">Blý er þungur málmur sem þarf að meðhöndla rétt. Við tökum við blýi og sjáum um örugga og umhverfisvæna endurvinnslu.</p>
+        <h3 data-en="Lead" data-pl="Ołów">Blý</h3>
+        <p data-en="Lead is a heavy metal that must be handled correctly. We accept lead and take care of safe, environmentally friendly recycling." data-pl="Ołów to metal ciężki, który wymaga właściwego postępowania. Przyjmujemy ołów i dbamy o jego bezpieczny, przyjazny dla środowiska recykling.">Blý er þungur málmur sem þarf að meðhöndla rétt. Við tökum við blýi og sjáum um örugga og umhverfisvæna endurvinnslu.</p>
       </div>
     </div>
     <div class="metal-pane" data-pane="rydfritt">
-      <button type="button" class="metal-summary" data-en="Stainless steel" aria-expanded="false">Ryðfrítt stál</button>
+      <button type="button" class="metal-summary" data-en="Stainless steel" data-pl="Stal nierdzewna" aria-expanded="false">Ryðfrítt stál</button>
       <div class="metal-image" style="background-image: url('rydfritt.jpg');"></div>
       <div class="metal-text">
-        <h3 data-en="Stainless steel">Ryðfrítt stál</h3>
-        <p data-en="Stainless steel is a durable material commonly found in household appliances, such as sinks, pots, pans, refrigerators and washing machines. It often looks like ordinary steel but contains other elements that protect it against rust and corrosion.">Ryðfrítt stál er endingargott efni sem finnst mikið í heimilistækjum, svo sem vöskum, pottum, pönnum, ísskápum og þvottavélum. Það líkist oft venjulegu stáli en inniheldur önnur efni sem vernda það gegn ryði og tæringu.</p>
+        <h3 data-en="Stainless steel" data-pl="Stal nierdzewna">Ryðfrítt stál</h3>
+        <p data-en="Stainless steel is a durable material commonly found in household appliances, such as sinks, pots, pans, refrigerators and washing machines. It often looks like ordinary steel but contains other elements that protect it against rust and corrosion." data-pl="Stal nierdzewna to trwały materiał powszechnie spotykany w sprzęcie domowym, takim jak zlewy, garnki, patelnie, lodówki i pralki. Często wygląda jak zwykła stal, lecz zawiera inne pierwiastki, które chronią ją przed rdzą i korozją.">Ryðfrítt stál er endingargott efni sem finnst mikið í heimilistækjum, svo sem vöskum, pottum, pönnum, ísskápum og þvottavélum. Það líkist oft venjulegu stáli en inniheldur önnur efni sem vernda það gegn ryði og tæringu.</p>
       </div>
     </div>
     <div class="metal-pane" data-pane="alfelgur">
-      <button type="button" class="metal-summary" data-en="Alloy wheels" aria-expanded="false">Álfelgur</button>
+      <button type="button" class="metal-summary" data-en="Alloy wheels" data-pl="Felgi aluminiowe" aria-expanded="false">Álfelgur</button>
       <div class="metal-image" style="background-image: url('alfelgur.jpg?v=2');"></div>
       <div class="metal-text">
-        <h3 data-en="Alloy wheels">Álfelgur</h3>
-        <p data-en="Alloy wheels are made of aluminium and rust very little. We accept alloy wheels for recycling, where the aluminium is used again in production.">Álfelgur eru úr áli og ryðga mjög lítið. Við tökum við álfelgum til endurvinnslu þar sem álið er notað aftur í framleiðslu.</p>
+        <h3 data-en="Alloy wheels" data-pl="Felgi aluminiowe">Álfelgur</h3>
+        <p data-en="Alloy wheels are made of aluminium and rust very little. We accept alloy wheels for recycling, where the aluminium is used again in production." data-pl="Felgi aluminiowe wykonane są z aluminium i prawie nie rdzewieją. Przyjmujemy felgi aluminiowe do recyklingu, w którym aluminium jest ponownie wykorzystywane w produkcji.">Álfelgur eru úr áli og ryðga mjög lítið. Við tökum við álfelgum til endurvinnslu þar sem álið er notað aftur í framleiðslu.</p>
       </div>
     </div>
     <div class="metal-pane" data-pane="kaplar">
-      <button type="button" class="metal-summary" data-en="Cables" aria-expanded="false">Kaplar</button>
+      <button type="button" class="metal-summary" data-en="Cables" data-pl="Kable" aria-expanded="false">Kaplar</button>
       <div class="metal-image" style="background-image: url('kaplar.jpg');"></div>
       <div class="metal-text">
-        <h3 data-en="Cables">Kaplar</h3>
-        <p data-en="Cables contain metals such as copper and aluminium beneath the insulation. We accept all kinds of cables and electrical wiring for recycling.">Kaplar innihalda málma eins og kopar og ál undir einangruninni. Við tökum við alls kyns köplum og rafmagnsvírum til endurvinnslu.</p>
+        <h3 data-en="Cables" data-pl="Kable">Kaplar</h3>
+        <p data-en="Cables contain metals such as copper and aluminium beneath the insulation. We accept all kinds of cables and electrical wiring for recycling." data-pl="Kable zawierają pod izolacją metale takie jak miedź i aluminium. Przyjmujemy do recyklingu wszelkiego rodzaju kable i przewody elektryczne.">Kaplar innihalda málma eins og kopar og ál undir einangruninni. Við tökum við alls kyns köplum og rafmagnsvírum til endurvinnslu.</p>
       </div>
     </div>
     <div class="metal-pane" data-pane="rafgeymar">
-      <button type="button" class="metal-summary" data-en="Batteries" aria-expanded="false">Rafgeymar</button>
+      <button type="button" class="metal-summary" data-en="Batteries" data-pl="Akumulatory" aria-expanded="false">Rafgeymar</button>
       <div class="metal-image" style="background-image: url('rafgeymar.jpg');"></div>
       <div class="metal-text">
-        <h3 data-en="Batteries">Rafgeymar</h3>
-        <p data-en="We accept vehicle batteries and ensure safe disposal and recycling.">Við tökum við öllum gerðum rafgeyma og sjáum um örugga förgun og endurvinnslu á þeim.</p>
+        <h3 data-en="Batteries" data-pl="Akumulatory">Rafgeymar</h3>
+        <p data-en="We accept vehicle batteries and ensure safe disposal and recycling." data-pl="Przyjmujemy akumulatory samochodowe i zapewniamy ich bezpieczną utylizację oraz recykling.">Við tökum við öllum gerðum rafgeyma og sjáum um örugga förgun og endurvinnslu á þeim.</p>
       </div>
     </div>
   </div>
@@ -2341,37 +2426,37 @@ c-38 -39 -41 -39 -90 -33 -28 4 -61 13 -73 21 -19 13 -25 12 -56 -7 -34 -21
   <div class="bilaf-bg"></div>
   <div class="bilaf-content">
     <div class="bilaf-main reveal">
-    <div class="section-label" data-en="Car recycling">Bílaförgun</div>
+    <div class="section-label" data-en="Car recycling" data-pl="Złomowanie aut">Bílaförgun</div>
     <div class="rule"></div>
-    <h2 class="section-title reveal" data-en="Scrap your car at Fura">Fargaðu bílnum hjá Furu</h2>
-    <p class="bilaf-intro" data-en='Get <span class="po">30,000</span><span class="pb">40,000&nbsp;ISK</span> for scrapping your car — the State Treasury pays 30,000 ISK and Fura adds 10,000 ISK, <strong class="pu">until the New Year</strong>.'>Fáðu <span class="po">30.000</span><span class="pb">40.000&nbsp;kr.</span> fyrir að farga bílnum þínum — Ríkisféhirðir greiðir 30.000 kr. og Fura bætir 10.000 kr. við, <strong class="pu">til áramóta</strong>.</p>
-    <p style="max-width:540px;margin:-0.8rem 0 1.75rem;font-size:1.05rem;line-height:1.7;color:#ffffff;font-weight:700" data-en="A scrapping fee now applies to all caravans and campers.">Förgunargjald er nú á öllum ferðavögnum.</p>
-    <a href="https://island.is/umsoknir/skilavottord" target="_blank" class="bilaf-link" data-en="Apply for a certificate →">Sækja um skilavottorð →</a>
+    <h2 class="section-title reveal" data-en="Scrap your car at Fura" data-pl="Zezłomuj swoje auto w Furze">Fargaðu bílnum hjá Furu</h2>
+    <p class="bilaf-intro" data-en='Get <span class="po">30,000</span><span class="pb">40,000&nbsp;ISK</span> for scrapping your car — 30,000 ISK from the Financial Management Authority plus an extra 10,000 ISK from Fura, <strong class="pu">until the New Year</strong>.' data-pl='Otrzymaj <span class="po">30&nbsp;000</span><span class="pb">40&nbsp;000&nbsp;ISK</span> za złomowanie swojego auta — 30&nbsp;000 ISK od Financial Management Authority oraz dodatkowo 10&nbsp;000 ISK od Fury, <strong class="pu">do Nowego Roku</strong>.'>Fáðu <span class="po">30.000</span><span class="pb">40.000&nbsp;kr.</span> fyrir að farga bílnum þínum — Fjársýsla ríkisins greiðir 30.000 kr. og Fura bætir 10.000 kr. aukalega við, <strong class="pu">til áramóta</strong>.</p>
+    <p style="max-width:540px;margin:-0.8rem 0 1.75rem;font-size:1.05rem;line-height:1.7;color:#ffffff;font-weight:700" data-en="A scrapping fee now applies to all caravans and campers." data-pl="Od teraz opłata za złomowanie obowiązuje dla wszystkich przyczep kempingowych i kamperów.">Förgunargjald er nú á öllum ferðavögnum.</p>
+    <a href="https://island.is/umsoknir/skilavottord" target="_blank" class="bilaf-link" data-en="Apply for a certificate →" data-pl="Złóż wniosek o zaświadczenie →">Sækja um skilavottorð →</a>
     </div>
-    <a href="/bilaforgun" class="btn-blue bilaf-more-btn reveal delay-1" data-en="See more →">Sjá nánar →</a>
+    <a href="/bilaforgun" class="btn-blue bilaf-more-btn reveal delay-1" data-en="See more →" data-pl="Zobacz więcej →">Sjá nánar →</a>
   </div>
 </section>
 
 <!-- WHY FURA -->
 <section class="why" id="afhverju-fura">
-  <div class="section-label" data-en="Why Fura?">Af hverju Fura?</div>
+  <div class="section-label" data-en="Why Fura?" data-pl="Dlaczego Fura?">Af hverju Fura?</div>
   <div class="rule"></div>
   <div class="why-grid">
     <div class="why-card reveal">
-      <h3 data-en="Fast, personal service">Góð og hröð þjónusta</h3>
-      <p data-en="We pride ourselves on personal service and quick responses. We take care of the whole job from start to finish, from delivering the containers to collecting the metal.">Við leggjum áherslu á persónulega þjónustu og skjót viðbrögð. Við sjáum um allt ferlið frá upphafi til enda, útvegum viðeigandi ílát og sækjum málmana.</p>
+      <h3 data-en="Fast, personal service" data-pl="Szybka, osobista obsługa">Góð og hröð þjónusta</h3>
+      <p data-en="We pride ourselves on personal service and quick responses. We take care of the whole job from start to finish, from delivering the containers to collecting the metal." data-pl="Stawiamy na osobistą obsługę i szybkie odpowiedzi. Zajmujemy się całością od początku do końca — od dostarczenia kontenerów po odbiór metalu.">Við leggjum áherslu á persónulega þjónustu og skjót viðbrögð. Við sjáum um allt ferlið frá upphafi til enda, útvegum viðeigandi ílát og sækjum málmana.</p>
     </div>
     <div class="why-card reveal delay-1">
-      <h3 data-en="Sustainability">Umhverfisvernd</h3>
-      <p data-en="Recycling metals saves raw materials and energy while reducing waste. We make sure all material is handled correctly, in line with Icelandic and European regulations.">Endurvinnsla málma sparar hráefni, orku og minnkar sóun. Við tryggjum að allt efni fari í réttan farveg í samræmi við íslenskar og evrópskar reglur.</p>
-      <a href="/umhverfisstefna" class="why-card-link" data-en="Read more about Fura's environmental policy →">Lesa meira um umhverfisstefnu Furu →</a>
+      <h3 data-en="Sustainability" data-pl="Zrównoważony rozwój">Umhverfisvernd</h3>
+      <p data-en="Recycling metals saves raw materials and energy while reducing waste. We make sure all material is handled correctly, in line with Icelandic and European regulations." data-pl="Recykling metali oszczędza surowce i energię, a przy tym ogranicza ilość odpadów. Dbamy o to, by cały materiał był przetwarzany prawidłowo, zgodnie z przepisami islandzkimi i europejskimi.">Endurvinnsla málma sparar hráefni, orku og minnkar sóun. Við tryggjum að allt efni fari í réttan farveg í samræmi við íslenskar og evrópskar reglur.</p>
+      <a href="/umhverfisstefna" class="why-card-link" data-en="Read more about Fura's environmental policy →" data-pl="Dowiedz się więcej o polityce środowiskowej Fury →">Lesa meira um umhverfisstefnu Furu →</a>
     </div>
     <div class="why-card reveal delay-2">
-      <h3 data-en="Experience">Reynsla</h3>
-      <p data-en="With over 40 years of experience in metal recycling in Iceland, we know the material and the process inside out.">Með yfir 40 ára reynslu af málmendurvinnslu á Íslandi þekkjum við hráefnið og ferlið út og inn.</p>
+      <h3 data-en="Experience" data-pl="Doświadczenie">Reynsla</h3>
+      <p data-en="With over 40 years of experience in metal recycling in Iceland, we know the material and the process inside out." data-pl="Dzięki ponad 40-letniemu doświadczeniu w recyklingu metali na Islandii znamy materiał i cały proces od podszewki.">Með yfir 40 ára reynslu af málmendurvinnslu á Íslandi þekkjum við hráefnið og ferlið út og inn.</p>
     </div>
   </div>
-  <a href="/um-furu" class="why-link-main" data-en="More about us →">Meira um okkur →</a>
+  <a href="/um-furu" class="why-link-main" data-en="More about us →" data-pl="Więcej o nas →">Meira um okkur →</a>
 </section>
 
 <!-- FOOTER -->
@@ -2383,7 +2468,7 @@ c-38 -39 -41 -39 -90 -33 -28 4 -61 13 -73 21 -19 13 -25 12 -56 -7 -34 -21
       <div class="location-name">Hafnarfjörður</div>
       <div class="location-grid">
         <div class="footer-col">
-          <h4 data-en="Contact">Samband</h4>
+          <h4 data-en="Contact" data-pl="Kontakt">Samband</h4>
           <ul>
             <li><a href="tel:5653557">565 3557</a></li>
             <li><a href="mailto:fura@fura.is">fura@fura.is</a></li>
@@ -2391,10 +2476,10 @@ c-38 -39 -41 -39 -90 -33 -28 4 -61 13 -73 21 -19 13 -25 12 -56 -7 -34 -21
           </ul>
         </div>
         <div class="footer-col">
-          <h4 data-en="Opening hours">Opnunartímar</h4>
-          <div class="hours-row"><span data-en="Mon–Fri">Mán–Fös</span><span>08:00 – 20:00</span></div>
-          <div class="hours-row"><span data-en="Saturday">Laugardagur</span><span>08:00 – 14:00</span></div>
-          <div class="hours-row"><span data-en="Sunday">Sunnudagur</span><span data-en="Closed">Lokað</span></div>
+          <h4 data-en="Opening hours" data-pl="Godziny otwarcia">Opnunartímar</h4>
+          <div class="hours-row"><span data-en="Mon–Fri" data-pl="Pon–Pt">Mán–Fös</span><span>08:00 – 20:00</span></div>
+          <div class="hours-row"><span data-en="Saturday" data-pl="Sobota">Laugardagur</span><span>08:00 – 14:00</span></div>
+          <div class="hours-row"><span data-en="Sunday" data-pl="Niedziela">Sunnudagur</span><span data-en="Closed" data-pl="Zamknięte">Lokað</span></div>
         </div>
       </div>
     </div>
@@ -2404,7 +2489,7 @@ c-38 -39 -41 -39 -90 -33 -28 4 -61 13 -73 21 -19 13 -25 12 -56 -7 -34 -21
       <div class="location-name">Akureyri</div>
       <div class="location-grid">
         <div class="footer-col">
-          <h4 data-en="Contact">Samband</h4>
+          <h4 data-en="Contact" data-pl="Kontakt">Samband</h4>
           <ul>
             <li><a href="tel:8944238">894 4238</a></li>
             <li><a href="mailto:gunnar@fura.is">gunnar@fura.is</a></li>
@@ -2412,9 +2497,9 @@ c-38 -39 -41 -39 -90 -33 -28 4 -61 13 -73 21 -19 13 -25 12 -56 -7 -34 -21
           </ul>
         </div>
         <div class="footer-col">
-          <h4 data-en="Opening hours">Opnunartímar</h4>
-          <div class="hours-row"><span data-en="Mon–Fri">Mán–Fös</span><span>08:00 – 17:00</span></div>
-          <div class="hours-row"><span data-en="Closed on weekends">Lokað um helgar</span><span></span></div>
+          <h4 data-en="Opening hours" data-pl="Godziny otwarcia">Opnunartímar</h4>
+          <div class="hours-row"><span data-en="Mon–Fri" data-pl="Pon–Pt">Mán–Fös</span><span>08:00 – 17:00</span></div>
+          <div class="hours-row"><span data-en="Closed on weekends" data-pl="Zamknięte w weekendy">Lokað um helgar</span><span></span></div>
         </div>
       </div>
     </div>
@@ -2427,7 +2512,7 @@ c-38 -39 -41 -39 -90 -33 -28 4 -61 13 -73 21 -19 13 -25 12 -56 -7 -34 -21
         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
         <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
       </svg>
-      <span data-en="Follow us">Fylgdu okkur</span>
+      <span data-en="Follow us" data-pl="Obserwuj nas">Fylgdu okkur</span>
     </a>
     <div class="footer-bottom-info">
       <p>© <span id="year">2026</span> Fura Málmendurvinnsla · Kt. 621281-1009</p>
@@ -2451,19 +2536,33 @@ c-38 -39 -41 -39 -90 -33 -28 4 -61 13 -73 21 -19 13 -25 12 -56 -7 -34 -21
   // ── Language switch: compact IS / EN toggle (IS default, EN optional) ──
   (function () {
     const KEY = 'fura-lang';
-    const sw = document.querySelector('.lang-switch');
-    if (!sw) return;
-    const opts = sw.querySelectorAll('.lang-opt');
+    const NAMES = { is: 'Íslenska', en: 'English', pl: 'Polski' };
+    const dd = document.querySelector('.lang-dd');
+    if (!dd) return;
+    const btn = dd.querySelector('.lang-dd-btn');
+    const cur = dd.querySelector('.lang-dd-cur');
+    const opts = dd.querySelectorAll('.lang-opt');
     function apply(lang) {
+      if (!NAMES[lang]) lang = 'is';
       document.documentElement.lang = lang;
       document.querySelectorAll('[data-en]').forEach(el => {
         if (el.dataset.is === undefined) el.dataset.is = el.innerHTML;
-        el.innerHTML = (lang === 'en') ? el.dataset.en : el.dataset.is;
+        const v = el.dataset[lang];                       // data-en / data-pl (data-is er upprunalegi textinn)
+        el.innerHTML = (lang !== 'is' && v !== undefined) ? v : el.dataset.is;
       });
       opts.forEach(o => o.classList.toggle('active', o.dataset.lang === lang));
+      if (cur) cur.textContent = NAMES[lang];
       try { sessionStorage.setItem(KEY, lang); } catch (e) {}
     }
-    opts.forEach(o => o.addEventListener('click', () => apply(o.dataset.lang)));
+    function close() { dd.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = dd.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    opts.forEach(o => o.addEventListener('click', () => { apply(o.dataset.lang); close(); }));
+    document.addEventListener('click', (e) => { if (!dd.contains(e.target)) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
     let saved = 'is';
     try { saved = sessionStorage.getItem(KEY) || 'is'; } catch (e) {}
     apply(saved);
@@ -2640,7 +2739,7 @@ c-38 -39 -41 -39 -90 -33 -28 4 -61 13 -73 21 -19 13 -25 12 -56 -7 -34 -21
 
     type();
     // Re-type when the language is switched (markup swaps to the other language).
-    document.querySelectorAll('.lang-switch .lang-opt').forEach(o =>
+    document.querySelectorAll('.lang-dd .lang-opt').forEach(o =>
       o.addEventListener('click', () => setTimeout(type, 0))
     );
   })();
