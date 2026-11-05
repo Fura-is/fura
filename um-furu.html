@@ -379,6 +379,38 @@
       .nav-logo img { max-width: 150px; }
       .nav-right { gap: 0.55rem; }
     }
+  
+    /* Tungumála-fellilisti (IS / EN / PL, hvert á sínu máli) */
+    .lang-dd { position: relative; flex-shrink: 0; }
+    .lang-dd-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: transparent; border: 1px solid rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.9); font-family: inherit; font-size: 0.9rem;
+      font-weight: 600; letter-spacing: 0.01em; line-height: 1;
+      padding: 0.5rem 0.75rem; border-radius: 6px; cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .lang-dd-btn:hover { border-color: rgba(255,255,255,0.42); color: #fff; }
+    .lang-dd-caret { transition: transform 0.2s; margin-top: 1px; }
+    .lang-dd.open .lang-dd-caret { transform: rotate(180deg); }
+    .lang-dd-menu {
+      position: absolute; top: calc(100% + 8px); right: 0;
+      min-width: 100%; list-style: none; margin: 0; padding: 0.3rem;
+      background: #1c1713; border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 8px; box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+      display: none; z-index: 200;
+    }
+    .lang-dd.open .lang-dd-menu { display: block; }
+    .lang-dd-menu li { margin: 0; }
+    .lang-dd-menu .lang-opt {
+      display: block; width: 100%; text-align: left; white-space: nowrap;
+      background: transparent; border: none; color: rgba(255,255,255,0.75);
+      font-family: inherit; font-size: 0.92rem; font-weight: 600;
+      padding: 0.5rem 0.95rem; border-radius: 5px; cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-dd-menu .lang-opt:hover { background: rgba(255,255,255,0.08); color: #fff; }
+    .lang-dd-menu .lang-opt.active { color: #fff; background: rgba(91,141,239,0.22); }
   </style>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
@@ -395,45 +427,56 @@
     </a>
     <div class="nav-right">
     <ul class="nav-links">
-      <li><a href="/#thjonusta" data-en="Services">Þjónusta</a></li>
-      <li><a href="/#malmar" data-en="Metals">Málmar</a></li>
-      <li><a href="/bilaforgun" data-en="Car recycling">Bílaförgun</a></li>
-      <li><a href="/um-furu" class="active" data-en="About Fura">Um Furu</a></li>
+      <li><a href="/#thjonusta" data-en="Services" data-pl="Usługi">Þjónusta</a></li>
+      <li><a href="/#malmar" data-en="Metals" data-pl="Metale">Málmar</a></li>
+      <li><a href="/bilaforgun" data-en="Car recycling" data-pl="Złomowanie aut">Bílaförgun</a></li>
+      <li><a href="/um-furu" class="active" data-en="About Fura" data-pl="O Furze">Um Furu</a></li>
       <li><a href="/furuflis" class="nav-ff"><img src="furuflis-logo-color.png" alt="Furuflís" /></a></li>
-      <li><a href="/#samband" class="nav-cta" data-en="Contact">Hafa samband</a></li>
+      <li><a href="/#samband" class="nav-cta" data-en="Contact" data-pl="Kontakt">Hafa samband</a></li>
     </ul>
-    <button class="nav-burger" id="burger" aria-label="Valmynd">
+    <div class="lang-dd" aria-label="Tungumál / Language">
+      <button type="button" class="lang-dd-btn" aria-haspopup="true" aria-expanded="false">
+        <span class="lang-dd-cur">Íslenska</span>
+        <svg class="lang-dd-caret" width="11" height="7" viewBox="0 0 11 7" fill="none" aria-hidden="true"><path d="M1 1l4.5 4.5L10 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <ul class="lang-dd-menu" role="menu">
+        <li><button type="button" class="lang-opt" data-lang="is">Íslenska</button></li>
+        <li><button type="button" class="lang-opt" data-lang="en">English</button></li>
+        <li><button type="button" class="lang-opt" data-lang="pl">Polski</button></li>
+      </ul>
+    </div>
+        <button class="nav-burger" id="burger" aria-label="Valmynd">
       <span></span><span></span><span></span>
     </button>
     </div>
   </div>
   <div class="nav-mobile" id="mobile-menu">
-    <a href="/#thjonusta" data-en="Services">Þjónusta</a>
-    <a href="/#malmar" data-en="Metals">Málmar</a>
-    <a href="/bilaforgun" data-en="Car recycling">Bílaförgun</a>
-    <a href="/um-furu" data-en="About Fura">Um Furu</a>
+    <a href="/#thjonusta" data-en="Services" data-pl="Usługi">Þjónusta</a>
+    <a href="/#malmar" data-en="Metals" data-pl="Metale">Málmar</a>
+    <a href="/bilaforgun" data-en="Car recycling" data-pl="Złomowanie aut">Bílaförgun</a>
+    <a href="/um-furu" data-en="About Fura" data-pl="O Furze">Um Furu</a>
     <a href="/furuflis" class="nav-ff-mobile"><img src="furuflis-logo-color.png" alt="Furuflís" /></a>
-    <a href="/#samband" class="nav-cta" data-en="Contact">Hafa samband</a>
+    <a href="/#samband" class="nav-cta" data-en="Contact" data-pl="Kontakt">Hafa samband</a>
   </div>
 </nav>
 
 <!-- CONTENT -->
 <div class="page">
-  <a href="/#afhverju-fura" class="back-top" data-en="← Back">← Til baka</a>
-  <h1 class="page-title" data-en="About Fura">Um Furu</h1>
+  <a href="/#afhverju-fura" class="back-top" data-en="← Back" data-pl="← Powrót">← Til baka</a>
+  <h1 class="page-title" data-en="About Fura" data-pl="O Furze">Um Furu</h1>
   <div class="rule"></div>
 
-  <p class="page-intro" data-en="At Fura we want to make recycling simpler, more efficient and accessible for individuals and businesses. Our goal is to improve the environment and ease our customers' workload through personal service, quick responses and reliable solutions.">Hjá Furu viljum við gera endurvinnslu einfaldari, skilvirkari og aðgengilegri fyrir einstaklinga og fyrirtæki. Markmið okkar er að bæta umhverfið og létta á verkefnum viðskiptavina með persónulegri þjónustu, skjótum viðbrögðum og áreiðanlegum lausnum.</p>
+  <p class="page-intro" data-en="At Fura we want to make recycling simpler, more efficient and accessible for individuals and businesses. Our goal is to improve the environment and ease our customers' workload through personal service, quick responses and reliable solutions." data-pl="W Furze chcemy, aby recykling był prostszy, wydajniejszy i dostępny dla osób prywatnych i firm. Naszym celem jest poprawa stanu środowiska i odciążenie klientów dzięki osobistej obsłudze, szybkim odpowiedziom i niezawodnym rozwiązaniom.">Hjá Furu viljum við gera endurvinnslu einfaldari, skilvirkari og aðgengilegri fyrir einstaklinga og fyrirtæki. Markmið okkar er að bæta umhverfið og létta á verkefnum viðskiptavina með persónulegri þjónustu, skjótum viðbrögðum og áreiðanlegum lausnum.</p>
 
-  <h2 class="about-heading" data-en="Over 40 years of experience">Yfir 40 ára reynsla</h2>
+  <h2 class="about-heading" data-en="Over 40 years of experience" data-pl="Ponad 40 lat doświadczenia">Yfir 40 ára reynsla</h2>
   <div class="rule"></div>
-  <p class="about-text" data-en="Fura has been operating since 1981, and has actively taken part in Icelandic recycling for more than four decades. From the very beginning, the company has evolved alongside growing demands for environmental protection and sustainability. The experience built up over the years enables us to provide safe, professional and efficient service.">Fura hefur starfað frá árinu 1981 og tekið virkan þátt í íslenskri endurvinnslu í meira en fjóra áratugi. Frá fyrstu dögum hefur fyrirtækið þróast samhliða auknum kröfum um umhverfisvernd og sjálfbærni. Sú reynsla sem byggst hefur upp í gegnum árin gerir okkur kleift að veita örugga, faglega og skilvirka þjónustu.</p>
+  <p class="about-text" data-en="Fura has been operating since 1981, and has actively taken part in Icelandic recycling for more than four decades. From the very beginning, the company has evolved alongside growing demands for environmental protection and sustainability. The experience built up over the years enables us to provide safe, professional and efficient service." data-pl="Fura działa od 1981 roku i od ponad czterech dekad aktywnie uczestniczy w islandzkim recyklingu. Od samego początku firma rozwijała się wraz z rosnącymi wymaganiami w zakresie ochrony środowiska i zrównoważonego rozwoju. Doświadczenie zdobyte przez lata pozwala nam świadczyć bezpieczne, profesjonalne i wydajne usługi.">Fura hefur starfað frá árinu 1981 og tekið virkan þátt í íslenskri endurvinnslu í meira en fjóra áratugi. Frá fyrstu dögum hefur fyrirtækið þróast samhliða auknum kröfum um umhverfisvernd og sjálfbærni. Sú reynsla sem byggst hefur upp í gegnum árin gerir okkur kleift að veita örugga, faglega og skilvirka þjónustu.</p>
 
-  <h2 class="about-heading" data-en="What makes Fura different">Hvað gerir Furu öðruvísi</h2>
+  <h2 class="about-heading" data-en="What makes Fura different" data-pl="Co wyróżnia Furę">Hvað gerir Furu öðruvísi</h2>
   <div class="rule"></div>
-  <p class="about-text" data-en="What sets Fura apart is our experience, our people and our service. Over more than four decades, we have built up expertise and a skilled team that knows the material and the process inside out. We provide personal service and respond quickly. Our goal is always to keep things simple for the customer. We handle the project from start to finish, whether it involves delivering containers, collecting material or assisting with larger projects.">Það sem aðgreinir Furu er reynslan, fólkið og þjónustan. Í meira en fjóra áratugi höfum við byggt upp þekkingu og fært starfsfólk sem þekkir hráefnið og ferlið út og inn. Við veitum persónulega þjónustu og bregðumst skjótt við. Markmiðið er alltaf að gera ferlið einfalt fyrir viðskiptavininn og sjá um verkefnið frá upphafi til enda, hvort sem um er að ræða afhendingu gáma, söfnun efnis eða aðstoð við stærri verkefni.</p>
+  <p class="about-text" data-en="What sets Fura apart is our experience, our people and our service. Over more than four decades, we have built up expertise and a skilled team that knows the material and the process inside out. We provide personal service and respond quickly. Our goal is always to keep things simple for the customer. We handle the project from start to finish, whether it involves delivering containers, collecting material or assisting with larger projects." data-pl="Furę wyróżnia nasze doświadczenie, nasi ludzie i nasza obsługa. Przez ponad cztery dekady zbudowaliśmy wiedzę i zgrany zespół, który zna materiał i proces od podszewki. Zapewniamy osobistą obsługę i szybko odpowiadamy. Naszym celem jest zawsze ułatwić sprawę klientowi. Zajmujemy się projektem od początku do końca — czy to dostarczenie kontenerów, odbiór materiału, czy pomoc przy większych projektach.">Það sem aðgreinir Furu er reynslan, fólkið og þjónustan. Í meira en fjóra áratugi höfum við byggt upp þekkingu og fært starfsfólk sem þekkir hráefnið og ferlið út og inn. Við veitum persónulega þjónustu og bregðumst skjótt við. Markmiðið er alltaf að gera ferlið einfalt fyrir viðskiptavininn og sjá um verkefnið frá upphafi til enda, hvort sem um er að ræða afhendingu gáma, söfnun efnis eða aðstoð við stærri verkefni.</p>
 
-  <h2 class="about-heading" style="margin-top: 3rem;" data-en="Our team">Starfsfólk</h2>
+  <h2 class="about-heading" style="margin-top: 3rem;" data-en="Our team" data-pl="Nasz zespół">Starfsfólk</h2>
   <div class="rule"></div>
 
   <!-- Hafnarfjörður -->
@@ -443,7 +486,7 @@
 
       <div class="staff-card">
         <div class="staff-name">Úlfar Haraldsson</div>
-        <div class="staff-title" data-en="Managing Director">Framkvæmdastjóri</div>
+        <div class="staff-title" data-en="Managing Director" data-pl="Dyrektor zarządzający">Framkvæmdastjóri</div>
         <div class="staff-contact">
           <a href="mailto:ulfar@fura.is">ulfar@fura.is</a>
         </div>
@@ -451,7 +494,7 @@
 
       <div class="staff-card">
         <div class="staff-name">Jakob V. Arnarson</div>
-        <div class="staff-title" data-en="Station Manager">Stöðvarstjóri</div>
+        <div class="staff-title" data-en="Station Manager" data-pl="Kierownik stacji">Stöðvarstjóri</div>
         <div class="staff-contact">
           <a href="mailto:jakob@fura.is">jakob@fura.is</a>
         </div>
@@ -459,7 +502,7 @@
 
       <div class="staff-card">
         <div class="staff-name">Dagný M. Jónsdóttir</div>
-        <div class="staff-title" data-en="Office">Skrifstofa</div>
+        <div class="staff-title" data-en="Office" data-pl="Biuro">Skrifstofa</div>
         <div class="staff-contact">
           <a href="mailto:dagny@fura.is">dagny@fura.is</a>
         </div>
@@ -467,7 +510,7 @@
 
       <div class="staff-card">
         <div class="staff-name">Stella Björk Guðmundsdóttir</div>
-        <div class="staff-title" data-en="Container handling &amp; reception">Gámalosun og afgreiðsla</div>
+        <div class="staff-title" data-en="Container handling &amp; reception" data-pl="Obsługa kontenerów i odbiór">Gámalosun og afgreiðsla</div>
         <div class="staff-contact">
           <a href="mailto:afgreidsla@fura.is">afgreidsla@fura.is</a>
         </div>
@@ -475,7 +518,7 @@
 
       <div class="staff-card">
         <div class="staff-name">Elvar K. Gapunay</div>
-        <div class="staff-title" data-en="Marketing &amp; Sales">Markaðs og söludeild</div>
+        <div class="staff-title" data-en="Marketing &amp; Sales" data-pl="Marketing i sprzedaż">Markaðs og söludeild</div>
         <div class="staff-contact">
           <a href="mailto:elvar@fura.is">elvar@fura.is</a>
         </div>
@@ -483,7 +526,7 @@
 
       <div class="staff-card">
         <div class="staff-name">Gunnar Páll Pálsson</div>
-        <div class="staff-title" data-en="Project Manager">Verkefnastjóri</div>
+        <div class="staff-title" data-en="Project Manager" data-pl="Kierownik projektu">Verkefnastjóri</div>
         <div class="staff-contact">
           <a href="mailto:gpp@fura.is">gpp@fura.is</a>
         </div>
@@ -499,7 +542,7 @@
 
       <div class="staff-card">
         <div class="staff-name">Gunnar Þ. Garðarsson</div>
-        <div class="staff-title" data-en="Regional Project Manager">Verkefnastjóri landsbyggðar</div>
+        <div class="staff-title" data-en="Regional Project Manager" data-pl="Regionalny kierownik projektu">Verkefnastjóri landsbyggðar</div>
         <div class="staff-contact">
           <a href="mailto:gunnar@fura.is">gunnar@fura.is</a>
           <a href="tel:8944238">894 4238</a>
@@ -523,13 +566,29 @@
   // ── Apply saved language (the IS/EN toggle lives on the home page only) ──
   (function () {
     const KEY = 'fura-lang';
+    const NAMES = { is: 'Íslenska', en: 'English', pl: 'Polski' };
+    const dd = document.querySelector('.lang-dd');
+    if (!dd) return;
+    const btn = dd.querySelector('.lang-dd-btn');
+    const cur = dd.querySelector('.lang-dd-cur');
+    const opts = dd.querySelectorAll('.lang-opt');
     function apply(lang) {
+      if (!NAMES[lang]) lang = 'is';
       document.documentElement.lang = lang;
       document.querySelectorAll('[data-en]').forEach(el => {
         if (el.dataset.is === undefined) el.dataset.is = el.innerHTML;
-        el.innerHTML = (lang === 'en') ? el.dataset.en : el.dataset.is;
+        const v = el.dataset[lang];
+        el.innerHTML = (lang !== 'is' && v !== undefined) ? v : el.dataset.is;
       });
+      opts.forEach(o => o.classList.toggle('active', o.dataset.lang === lang));
+      if (cur) cur.textContent = NAMES[lang];
+      try { sessionStorage.setItem(KEY, lang); } catch (e) {}
     }
+    function closeMenu() { dd.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+    btn.addEventListener('click', (e) => { e.stopPropagation(); const open = dd.classList.toggle('open'); btn.setAttribute('aria-expanded', open ? 'true' : 'false'); });
+    opts.forEach(o => o.addEventListener('click', () => { apply(o.dataset.lang); closeMenu(); }));
+    document.addEventListener('click', (e) => { if (!dd.contains(e.target)) closeMenu(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
     let saved = 'is';
     try { saved = sessionStorage.getItem(KEY) || 'is'; } catch (e) {}
     apply(saved);

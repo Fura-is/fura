@@ -373,6 +373,38 @@
     @media (max-width: 1200px) { .nav-links { display: none; } .nav-burger { display: flex; } }
     @media (min-width: 1201px) { .nav-mobile { display: none !important; } }
     @media (max-width: 600px) { .nav-top { padding: 0 4%; } .nav-logo img { height: auto; max-width: 200px; } }
+  
+    /* Tungumála-fellilisti (IS / EN / PL, hvert á sínu máli) */
+    .lang-dd { position: relative; flex-shrink: 0; }
+    .lang-dd-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: transparent; border: 1px solid rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.9); font-family: inherit; font-size: 0.9rem;
+      font-weight: 600; letter-spacing: 0.01em; line-height: 1;
+      padding: 0.5rem 0.75rem; border-radius: 6px; cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .lang-dd-btn:hover { border-color: rgba(255,255,255,0.42); color: #fff; }
+    .lang-dd-caret { transition: transform 0.2s; margin-top: 1px; }
+    .lang-dd.open .lang-dd-caret { transform: rotate(180deg); }
+    .lang-dd-menu {
+      position: absolute; top: calc(100% + 8px); right: 0;
+      min-width: 100%; list-style: none; margin: 0; padding: 0.3rem;
+      background: #1c1713; border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 8px; box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+      display: none; z-index: 200;
+    }
+    .lang-dd.open .lang-dd-menu { display: block; }
+    .lang-dd-menu li { margin: 0; }
+    .lang-dd-menu .lang-opt {
+      display: block; width: 100%; text-align: left; white-space: nowrap;
+      background: transparent; border: none; color: rgba(255,255,255,0.75);
+      font-family: inherit; font-size: 0.92rem; font-weight: 600;
+      padding: 0.5rem 0.95rem; border-radius: 5px; cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-dd-menu .lang-opt:hover { background: rgba(255,255,255,0.08); color: #fff; }
+    .lang-dd-menu .lang-opt.active { color: #fff; background: rgba(91,141,239,0.22); }
   </style>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
@@ -390,65 +422,76 @@
     </a>
     <div class="nav-right">
     <ul class="nav-links">
-      <li><a href="/#thjonusta" data-en="Services">Þjónusta</a></li>
-      <li><a href="/#malmar" data-en="Metals">Málmar</a></li>
-      <li><a href="/bilaforgun" class="active" data-en="Car recycling">Bílaförgun</a></li>
-      <li><a href="/um-furu" data-en="About Fura">Um Furu</a></li>
+      <li><a href="/#thjonusta" data-en="Services" data-pl="Usługi">Þjónusta</a></li>
+      <li><a href="/#malmar" data-en="Metals" data-pl="Metale">Málmar</a></li>
+      <li><a href="/bilaforgun" class="active" data-en="Car recycling" data-pl="Złomowanie aut">Bílaförgun</a></li>
+      <li><a href="/um-furu" data-en="About Fura" data-pl="O Furze">Um Furu</a></li>
       <li><a href="/furuflis" class="nav-ff"><img src="furuflis-logo-color.png" alt="Furuflís" /></a></li>
-      <li><a href="/#samband" class="nav-cta" data-en="Contact">Hafa samband</a></li>
+      <li><a href="/#samband" class="nav-cta" data-en="Contact" data-pl="Kontakt">Hafa samband</a></li>
     </ul>
-    <button class="nav-burger" id="burger" aria-label="Valmynd"><span></span><span></span><span></span></button>
+    <div class="lang-dd" aria-label="Tungumál / Language">
+      <button type="button" class="lang-dd-btn" aria-haspopup="true" aria-expanded="false">
+        <span class="lang-dd-cur">Íslenska</span>
+        <svg class="lang-dd-caret" width="11" height="7" viewBox="0 0 11 7" fill="none" aria-hidden="true"><path d="M1 1l4.5 4.5L10 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <ul class="lang-dd-menu" role="menu">
+        <li><button type="button" class="lang-opt" data-lang="is">Íslenska</button></li>
+        <li><button type="button" class="lang-opt" data-lang="en">English</button></li>
+        <li><button type="button" class="lang-opt" data-lang="pl">Polski</button></li>
+      </ul>
+    </div>
+        <button class="nav-burger" id="burger" aria-label="Valmynd"><span></span><span></span><span></span></button>
     </div>
   </div>
   <div class="nav-mobile" id="mobile-menu">
-    <a href="/#thjonusta" data-en="Services">Þjónusta</a>
-    <a href="/#malmar" data-en="Metals">Málmar</a>
-    <a href="/bilaforgun" data-en="Car recycling">Bílaförgun</a>
-    <a href="/um-furu" data-en="About Fura">Um Furu</a>
+    <a href="/#thjonusta" data-en="Services" data-pl="Usługi">Þjónusta</a>
+    <a href="/#malmar" data-en="Metals" data-pl="Metale">Málmar</a>
+    <a href="/bilaforgun" data-en="Car recycling" data-pl="Złomowanie aut">Bílaförgun</a>
+    <a href="/um-furu" data-en="About Fura" data-pl="O Furze">Um Furu</a>
     <a href="/furuflis" class="nav-ff-mobile"><img src="furuflis-logo-color.png" alt="Furuflís" /></a>
-    <a href="/#samband" class="nav-cta" data-en="Contact">Hafa samband</a>
+    <a href="/#samband" class="nav-cta" data-en="Contact" data-pl="Kontakt">Hafa samband</a>
   </div>
 </nav>
 
 <!-- PAGE HEADER (subpage) — titill → mynd efst → texti fyrir neðan -->
 <section class="block page-head">
   <div class="wrap">
-    <a href="/" class="back-top" data-en="← Back to home">← Aftur á forsíðu</a>
+    <a href="/" class="back-top" data-en="← Back to home" data-pl="← Powrót do strony głównej">← Aftur á forsíðu</a>
   </div>
   <!-- HERO: stór mynd með titli ofan á -->
   <div class="page-hero reveal">
     <img src="bilaforgun-hero.jpg" alt="Bílar til förgunar hjá Furu" width="1500" height="844" fetchpriority="high" />
     <div class="page-hero-overlay">
-      <div class="section-label" data-en="Car recycling">Bílaförgun</div>
-      <h1 class="page-title" data-en="Need to <em>scrap your car?</em>">Þarf að <em>henda bílnum?</em></h1>
-      <p class="hero-sub" data-en="See the 3 steps below">Sjáðu skrefin 3 fyrir neðan</p>
+      <div class="section-label" data-en="Car recycling" data-pl="Złomowanie aut">Bílaförgun</div>
+      <h1 class="page-title" data-en="Need to <em>scrap your car?</em>" data-pl="Chcesz <em>zezłomować auto?</em>">Þarf að <em>henda bílnum?</em></h1>
+      <p class="hero-sub" data-en="See the 3 steps below" data-pl="Zobacz 3 kroki poniżej">Sjáðu skrefin 3 fyrir neðan</p>
       <div class="hero-arrow" aria-hidden="true">↓</div>
     </div>
   </div>
   <div class="wrap">
     <div class="rule"></div>
-    <p class="lead" data-en='Fura handles car scrapping and deregistration in Hafnarfjörður and Akureyri. Complete the deregistration with electronic ID and get <span class="po">30,000</span><span class="pb">40,000&nbsp;ISK</span> for scrapping your car — the State Treasury pays 30,000 ISK and Fura adds 10,000 ISK, <strong class="pu">until the New Year</strong>.'>Fura sér um bílaförgun og afskráningu ökutækja í Hafnarfirði og á Akureyri. Kláraðu afskráninguna með rafrænum skilríkjum og fáðu <span class="po">30.000</span><span class="pb">40.000&nbsp;kr.</span> fyrir að farga bílnum — Ríkisféhirðir greiðir 30.000 kr. og Fura bætir 10.000 kr. við, <strong class="pu">til áramóta</strong>.</p>
-    <p style="margin-top:0.4rem;font-size:1.1rem;line-height:1.8;color:#45403a;font-weight:700" data-en="A scrapping fee now applies to all caravans and campers.">Förgunargjald er nú á öllum ferðavögnum.</p>
+    <p class="lead" data-en='Fura handles car scrapping and deregistration in Hafnarfjörður and Akureyri. Complete the deregistration with electronic ID and get <span class="po">30,000</span><span class="pb">40,000&nbsp;ISK</span> for scrapping your car — the State Treasury pays 30,000 ISK and Fura adds 10,000 ISK, <strong class="pu">until the New Year</strong>.' data-pl='Fura zajmuje się złomowaniem i wyrejestrowaniem pojazdów w Hafnarfjörður i Akureyri. Dokończ wyrejestrowanie za pomocą podpisu elektronicznego i otrzymaj <span class="po">30&nbsp;000</span><span class="pb">40&nbsp;000&nbsp;ISK</span> za złomowanie swojego auta — Skarb Państwa wypłaca 30&nbsp;000 ISK, a Fura dodaje 10&nbsp;000 ISK, <strong class="pu">do Nowego Roku</strong>.'>Fura sér um bílaförgun og afskráningu ökutækja í Hafnarfirði og á Akureyri. Kláraðu afskráninguna með rafrænum skilríkjum og fáðu <span class="po">30.000</span><span class="pb">40.000&nbsp;kr.</span> fyrir að farga bílnum — Ríkisféhirðir greiðir 30.000 kr. og Fura bætir 10.000 kr. við, <strong class="pu">til áramóta</strong>.</p>
+    <p style="margin-top:0.4rem;font-size:1.1rem;line-height:1.8;color:#45403a;font-weight:700" data-en="A scrapping fee now applies to all caravans and campers." data-pl="Od teraz opłata za złomowanie obowiązuje dla wszystkich przyczep kempingowych i kamperów.">Förgunargjald er nú á öllum ferðavögnum.</p>
   </div>
 </section>
 
 <!-- HOW -->
 <section class="block" style="background:#fff; padding-bottom:2rem;">
   <div class="wrap">
-    <div class="section-label reveal" data-en="How it works">Hvernig þetta virkar</div>
-    <h2 class="section-title reveal" data-en="Scrap your car in 3 steps">Fargaðu bílnum í 3 skrefum</h2>
+    <div class="section-label reveal" data-en="How it works" data-pl="Jak to działa">Hvernig þetta virkar</div>
+    <h2 class="section-title reveal" data-en="Scrap your car in 3 steps" data-pl="Zezłomuj auto w 3 krokach">Fargaðu bílnum í 3 skrefum</h2>
     <div class="rule"></div>
     <div class="steps">
       <div class="step featured reveal">
         <div class="step-num">1</div>
-        <h3 data-en="Apply for a certificate">Sæktu um skilavottorð</h3>
-        <p data-en="Apply for a vehicle deregistration certificate on island.is using electronic ID.">Sæktu um skilavottorð ökutækja á island.is með rafrænum skilríkjum.</p>
-        <a href="https://island.is/umsoknir/skilavottord" target="_blank" rel="noopener" class="step-cta" data-en="Apply for a certificate →">Sækja um skilavottorð →</a>
+        <h3 data-en="Apply for a certificate" data-pl="Złóż wniosek o zaświadczenie">Sæktu um skilavottorð</h3>
+        <p data-en="Apply for a vehicle deregistration certificate on island.is using electronic ID." data-pl="Złóż na island.is wniosek o zaświadczenie o wyrejestrowaniu pojazdu, używając podpisu elektronicznego.">Sæktu um skilavottorð ökutækja á island.is með rafrænum skilríkjum.</p>
+        <a href="https://island.is/umsoknir/skilavottord" target="_blank" rel="noopener" class="step-cta" data-en="Apply for a certificate →" data-pl="Złóż wniosek o zaświadczenie →">Sækja um skilavottorð →</a>
       </div>
       <div class="step reveal delay-1">
         <div class="step-num">2</div>
-        <h3 data-en="We'll get your car to us">Komum bílnum til okkar</h3>
-        <p data-en="Get in touch and we'll get your car to us free of charge.">Hafðu samband og við komum bílnum til okkar þér að endurgjaldslausu.</p>
+        <h3 data-en="We'll get your car to us" data-pl="Odbierzemy Twoje auto">Komum bílnum til okkar</h3>
+        <p data-en="Get in touch and we'll get your car to us free of charge." data-pl="Skontaktuj się, a odbierzemy Twoje auto bezpłatnie.">Hafðu samband og við komum bílnum til okkar þér að endurgjaldslausu.</p>
         <div class="step-contact">
           <a href="mailto:afgreidsla@fura.is"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>afgreidsla@fura.is</a>
           <a href="tel:5653557"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>565 3557</a>
@@ -456,8 +499,8 @@
       </div>
       <div class="step reveal delay-2">
         <div class="step-num">3</div>
-        <h3 data-en="Get 40,000 ISK">Fáðu 40.000 kr</h3>
-        <p data-en='Once the car is deregistered and scrapped, the State Treasury pays you 30,000 ISK and Fura adds 10,000 ISK.<br><span class="pb">40,000&nbsp;ISK</span> in total<br><strong class="pu" style="white-space:nowrap">(valid until the New Year)</strong>'>Þegar bíllinn er afskráður og honum fargað greiðir Ríkisféhirðir þér 30.000 kr. og Fura bætir 10.000 kr. við.<br><span class="pb">40.000&nbsp;kr.</span> samtals<br><strong class="pu" style="white-space:nowrap">(gildir fram að áramótum)</strong></p>
+        <h3 data-en="Get 40,000 ISK" data-pl="Otrzymaj 40 000 ISK">Fáðu 40.000 kr</h3>
+        <p data-en='Once the car is deregistered and scrapped, the State Treasury pays you 30,000 ISK and Fura adds 10,000 ISK.<br><span class="pb">40,000&nbsp;ISK</span> in total<br><strong class="pu" style="white-space:nowrap">(valid until the New Year)</strong>' data-pl='Gdy auto zostanie wyrejestrowane i zezłomowane, Skarb Państwa wypłaca Ci 30&nbsp;000 ISK, a Fura dodaje 10&nbsp;000 ISK.<br><span class="pb">40&nbsp;000&nbsp;ISK</span> łącznie<br><strong class="pu" style="white-space:nowrap">(ważne do Nowego Roku)</strong>'>Þegar bíllinn er afskráður og honum fargað greiðir Ríkisféhirðir þér 30.000 kr. og Fura bætir 10.000 kr. við.<br><span class="pb">40.000&nbsp;kr.</span> samtals<br><strong class="pu" style="white-space:nowrap">(gildir fram að áramótum)</strong></p>
       </div>
     </div>
   </div>
@@ -469,10 +512,10 @@
     <div class="note reveal">
       <div class="note-head">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        <span data-en="Please note">Athugið</span>
+        <span data-en="Please note" data-pl="Uwaga">Athugið</span>
       </div>
-      <p data-en="We do not accept electric or hybrid cars unless the battery has been removed from the vehicle.">Við tökum ekki við rafmagns- eða hybrid bílum nema búið sé að fjarlægja batteríið úr bílnum.</p>
-      <p data-en="Please mark the car for deregistration before it is scrapped.">Vinsamlegast merkið bílinn til afskráningar áður en honum er fargað.</p>
+      <p data-en="We do not accept electric or hybrid cars unless the battery has been removed from the vehicle." data-pl="Nie przyjmujemy aut elektrycznych ani hybrydowych, o ile akumulator nie został wyjęty z pojazdu.">Við tökum ekki við rafmagns- eða hybrid bílum nema búið sé að fjarlægja batteríið úr bílnum.</p>
+      <p data-en="Please mark the car for deregistration before it is scrapped." data-pl="Prosimy oznaczyć auto do wyrejestrowania, zanim zostanie zezłomowane.">Vinsamlegast merkið bílinn til afskráningar áður en honum er fargað.</p>
     </div>
   </div>
 </section>
@@ -481,7 +524,7 @@
 <section class="block" style="padding-top:0;">
   <div class="wrap">
     <div class="veh-contact reveal">
-      <span class="veh-contact-label" data-en="Questions about your vehicle? Get in touch:">Spurningar um ökutækið þitt? Hafðu samband:</span>
+      <span class="veh-contact-label" data-en="Questions about your vehicle? Get in touch:" data-pl="Masz pytania o swój pojazd? Skontaktuj się:">Spurningar um ökutækið þitt? Hafðu samband:</span>
       <div class="veh-contact-links">
         <a href="tel:5653557"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>565 3557</a>
         <a href="mailto:afgreidsla@fura.is"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>afgreidsla@fura.is</a>
@@ -499,7 +542,7 @@
       <div class="location-name">Hafnarfjörður</div>
       <div class="location-grid">
         <div class="footer-col">
-          <h4 data-en="Contact">Samband</h4>
+          <h4 data-en="Contact" data-pl="Kontakt">Samband</h4>
           <ul>
             <li><a href="tel:5653557">565 3557</a></li>
             <li><a href="mailto:fura@fura.is">fura@fura.is</a></li>
@@ -507,10 +550,10 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4 data-en="Opening hours">Opnunartímar</h4>
-          <div class="hours-row"><span data-en="Mon–Fri">Mán–Fös</span><span>08:00 – 20:00</span></div>
-          <div class="hours-row"><span data-en="Saturday">Laugardagur</span><span>08:00 – 14:00</span></div>
-          <div class="hours-row"><span data-en="Sunday">Sunnudagur</span><span data-en="Closed">Lokað</span></div>
+          <h4 data-en="Opening hours" data-pl="Godziny otwarcia">Opnunartímar</h4>
+          <div class="hours-row"><span data-en="Mon–Fri" data-pl="Pon–Pt">Mán–Fös</span><span>08:00 – 20:00</span></div>
+          <div class="hours-row"><span data-en="Saturday" data-pl="Sobota">Laugardagur</span><span>08:00 – 14:00</span></div>
+          <div class="hours-row"><span data-en="Sunday" data-pl="Niedziela">Sunnudagur</span><span data-en="Closed" data-pl="Zamknięte">Lokað</span></div>
         </div>
       </div>
     </div>
@@ -520,7 +563,7 @@
       <div class="location-name">Akureyri</div>
       <div class="location-grid">
         <div class="footer-col">
-          <h4 data-en="Contact">Samband</h4>
+          <h4 data-en="Contact" data-pl="Kontakt">Samband</h4>
           <ul>
             <li><a href="tel:8944238">894 4238</a></li>
             <li><a href="mailto:gunnar@fura.is">gunnar@fura.is</a></li>
@@ -528,9 +571,9 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4 data-en="Opening hours">Opnunartímar</h4>
-          <div class="hours-row"><span data-en="Mon–Fri">Mán–Fös</span><span>08:00 – 17:00</span></div>
-          <div class="hours-row"><span data-en="Closed on weekends">Lokað um helgar</span><span></span></div>
+          <h4 data-en="Opening hours" data-pl="Godziny otwarcia">Opnunartímar</h4>
+          <div class="hours-row"><span data-en="Mon–Fri" data-pl="Pon–Pt">Mán–Fös</span><span>08:00 – 17:00</span></div>
+          <div class="hours-row"><span data-en="Closed on weekends" data-pl="Zamknięte w weekendy">Lokað um helgar</span><span></span></div>
         </div>
       </div>
     </div>
@@ -543,7 +586,7 @@
         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
         <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
       </svg>
-      <span data-en="Follow us">Fylgdu okkur</span>
+      <span data-en="Follow us" data-pl="Obserwuj nas">Fylgdu okkur</span>
     </a>
     <div class="footer-bottom-info">
       <p>© <span id="year">2026</span> Fura Málmendurvinnsla · Kt. 621281-1009</p>
@@ -564,13 +607,29 @@
   // ── Apply saved language (IS/EN toggle lives on the home page) ──
   (function () {
     const KEY = 'fura-lang';
+    const NAMES = { is: 'Íslenska', en: 'English', pl: 'Polski' };
+    const dd = document.querySelector('.lang-dd');
+    if (!dd) return;
+    const btn = dd.querySelector('.lang-dd-btn');
+    const cur = dd.querySelector('.lang-dd-cur');
+    const opts = dd.querySelectorAll('.lang-opt');
     function apply(lang) {
+      if (!NAMES[lang]) lang = 'is';
       document.documentElement.lang = lang;
       document.querySelectorAll('[data-en]').forEach(el => {
         if (el.dataset.is === undefined) el.dataset.is = el.innerHTML;
-        el.innerHTML = (lang === 'en') ? el.dataset.en : el.dataset.is;
+        const v = el.dataset[lang];
+        el.innerHTML = (lang !== 'is' && v !== undefined) ? v : el.dataset.is;
       });
+      opts.forEach(o => o.classList.toggle('active', o.dataset.lang === lang));
+      if (cur) cur.textContent = NAMES[lang];
+      try { sessionStorage.setItem(KEY, lang); } catch (e) {}
     }
+    function closeMenu() { dd.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+    btn.addEventListener('click', (e) => { e.stopPropagation(); const open = dd.classList.toggle('open'); btn.setAttribute('aria-expanded', open ? 'true' : 'false'); });
+    opts.forEach(o => o.addEventListener('click', () => { apply(o.dataset.lang); closeMenu(); }));
+    document.addEventListener('click', (e) => { if (!dd.contains(e.target)) closeMenu(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
     let saved = 'is';
     try { saved = sessionStorage.getItem(KEY) || 'is'; } catch (e) {}
     apply(saved);
