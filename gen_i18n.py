@@ -18,10 +18,10 @@ NAV_PATHS = ['/bilaforgun', '/um-furu', '/furuflis', '/umhverfisstefna']
 # Translated <title> and meta description per page (en, pl). IS keeps its own.
 META = {
  'index.html': {
-   'en': ("Fura — Metal Recycling in Iceland | Hafnarfjörður &amp; Akureyri",
-          "Fura buys iron, aluminium, copper, brass, lead and more. We collect containers in the capital area, Akureyri and nearby — over 40 years' experience since 1981."),
-   'pl': ("Fura — Recykling metali na Islandii | Hafnarfjörður i Akureyri",
-          "Fura skupuje żelazo, aluminium, miedź, mosiądz, ołów i inne metale. Podstawiamy kontenery w regionie stołecznym, Akureyri i okolicach — ponad 40 lat doświadczenia od 1981 roku."),
+   'en': ("Fura — Metal Recycling &amp; Scrap Metal | Hafnarfjörður &amp; Akureyri",
+          "Fura buys scrap metal — iron, aluminium, copper, brass, lead and more. We collect containers in the capital area, Akureyri and nearby — over 40 years' experience since 1981."),
+   'pl': ("Fura — Recykling metali i skup złomu | Hafnarfjörður i Akureyri",
+          "Fura skupuje złom — żelazo, aluminium, miedź, mosiądz, ołów i inne metale. Podstawiamy kontenery w regionie stołecznym, Akureyri i okolicach — ponad 40 lat doświadczenia od 1981 roku."),
  },
  'bilaforgun.html': {
    'en': ("Scrap your car — Car recycling at Fura | 40,000 ISK until the New Year",
