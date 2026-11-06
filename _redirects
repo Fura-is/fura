@@ -7,6 +7,18 @@
 /furuflis.html /furuflis 301
 /umhverfisstefna.html /umhverfisstefna 301
 
+# English / Polish localized pages — .html to clean URLs
+/en/index.html /en/ 301
+/en/bilaforgun.html /en/bilaforgun 301
+/en/um-furu.html /en/um-furu 301
+/en/furuflis.html /en/furuflis 301
+/en/umhverfisstefna.html /en/umhverfisstefna 301
+/pl/index.html /pl/ 301
+/pl/bilaforgun.html /pl/bilaforgun 301
+/pl/um-furu.html /pl/um-furu 301
+/pl/furuflis.html /pl/furuflis 301
+/pl/umhverfisstefna.html /pl/umhverfisstefna 301
+
 /verkefnin /#thjonusta 301
 /verkefnin/ /#thjonusta 301
 /thjonusta /#thjonusta 301

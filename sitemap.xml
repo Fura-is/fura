@@ -1,27 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://fura.is/</loc>
+    <xhtml:link rel="alternate" hreflang="is" href="https://fura.is/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://fura.is/en/" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fura.is/pl/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fura.is/" />
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://fura.is/bilaforgun</loc>
+    <xhtml:link rel="alternate" hreflang="is" href="https://fura.is/bilaforgun" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://fura.is/en/bilaforgun" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fura.is/pl/bilaforgun" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fura.is/bilaforgun" />
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://fura.is/um-furu</loc>
+    <xhtml:link rel="alternate" hreflang="is" href="https://fura.is/um-furu" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://fura.is/en/um-furu" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fura.is/pl/um-furu" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fura.is/um-furu" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://fura.is/furuflis</loc>
+    <xhtml:link rel="alternate" hreflang="is" href="https://fura.is/furuflis" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://fura.is/en/furuflis" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fura.is/pl/furuflis" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fura.is/furuflis" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://fura.is/umhverfisstefna</loc>
+    <xhtml:link rel="alternate" hreflang="is" href="https://fura.is/umhverfisstefna" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://fura.is/en/umhverfisstefna" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fura.is/pl/umhverfisstefna" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fura.is/umhverfisstefna" />
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>

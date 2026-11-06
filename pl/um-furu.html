@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O Furze — Nasz zespół i historia | Fura Recykling metali</title>
+  <meta name="description" content="Fura działa na Islandii od 1981 roku. Poznaj nasz zespół i historię firmy zajmującej się recyklingiem metali w regionie stołecznym i Akureyri." />
+  <link rel="canonical" href="https://fura.is/pl/um-furu" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="is_IS" />
+  <meta property="og:site_name" content="Fura Málmendurvinnsla" />
+  <meta property="og:title" content="O Furze — Nasz zespół i historia | Fura Recykling metali" />
+  <meta property="og:description" content="Fura działa na Islandii od 1981 roku. Poznaj nasz zespół i historię firmy zajmującej się recyklingiem metali w regionie stołecznym i Akureyri." />
+  <meta property="og:url" content="https://fura.is/pl/um-furu" />
+  <meta property="og:image" content="https://fura.is/hero-forsida.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="O Furze — Nasz zespół i historia | Fura Recykling metali" />
+  <meta name="twitter:description" content="Fura działa na Islandii od 1981 roku. Poznaj nasz zespół i historię firmy zajmującej się recyklingiem metali w regionie stołecznym i Akureyri." />
+  <meta name="twitter:image" content="https://fura.is/hero-forsida.jpg" />
+
+  <meta name="theme-color" content="#1a50a2" />
+
+  <!-- Structured data: AboutPage referencing the Fura organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": "https://fura.is/um-furu",
+    "url": "https://fura.is/um-furu",
+    "name": "Um Furu — Starfsfólk og saga",
+    "description": "Um Furu Málmendurvinnslu — starfsfólk og saga fyrirtækisins á Íslandi síðan 1981.",
+    "inLanguage": "is",
+    "isPartOf": { "@type": "WebSite", "name": "Fura Málmendurvinnsla", "url": "https://fura.is/" },
+    "about": {
+      "@type": "Organization",
+      "name": "Fura Málmendurvinnsla",
+      "alternateName": "Fura ehf.",
+      "url": "https://fura.is/",
+      "logo": "https://fura.is/fura-logo.svg",
+      "foundingDate": "1981",
+      "description": "Málmendurvinnsla á Íslandi síðan 1981. Kaupum járn, ál, kopar, messing, blý og fleiri málma.",
+      "sameAs": ["https://www.instagram.com/fura.ehf/"]
+    }
+  }
+  </script>
+  <style>
+    @font-face {
+      font-family: 'Onest';
+      src: url('/fonts/Onest-Variable.woff2') format('woff2-variations'),
+           url('/fonts/Onest-Variable.woff2') format('woff2');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    /* Scroll-reveal: rules slide in from the left when they enter the viewport */
+    .rule { transform: scaleX(0); transform-origin: left center; transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+    .rule.in-view { transform: scaleX(1); }
+    @media (prefers-reduced-motion: reduce) {
+      .rule { transform: none !important; transition: none !important; }
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:   #1a1512;
+      --warm:  #f5f0ea;
+      --mid:   #e8e0d5;
+      --blue:  #1a50a2;
+      --green: #2f5233;
+      --muted: #6b6259;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Onest', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--warm);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(20,16,13,0.96);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 80px;
+    }
+
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .nav-logo img { height: 28px; filter: brightness(0) invert(1); }
+    .nav-logo-sub {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.38);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding-left: 0.75rem;
+      border-left: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a {
+      position: relative;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.0625rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a.active { color: #fff; }
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      bottom: -8px;
+      height: 2px;
+      background: #5b8def;
+      border-radius: 2px;
+    }
+    .nav-links .nav-ff.active::after { left: 0; right: 0; bottom: -2px; }
+    .nav-links .nav-ff { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+    .nav-links .nav-ff img {
+      height: 30px;
+      display: block;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    .nav-links .nav-ff:hover img { opacity: 1; }
+    .nav-cta {
+      background: var(--blue) !important;
+      color: #fff !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 4px;
+      font-weight: 600 !important;
+    }
+
+    /* Right cluster + language switch */
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+    /* Language toggle lives on the home page only; subpages just inherit the saved choice. */
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+    }
+    .nav-burger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      background: rgba(20,16,13,0.98);
+      padding: 1rem 5% 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .nav-mobile a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-mobile a:last-child { border-bottom: none; }
+    .nav-mobile .nav-cta { margin-top: 0.5rem; text-align: center; border-radius: 4px; border-bottom: none !important; }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile .nav-ff-mobile { display: flex; align-items: center; gap: 0.75rem; }
+    .nav-mobile .nav-ff-mobile img { height: 32px !important; width: auto !important; max-width: 170px !important; opacity: 0.9; }
+
+    /* ── PAGE ── */
+    .page {
+      padding: 7rem 5% 5rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .page-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.6rem;
+    }
+
+    .page-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 3rem;
+    }
+
+    .rule {
+      width: 40px; height: 3px;
+      background: var(--blue);
+      border-radius: 2px;
+      margin: 0.75rem 0 2.5rem;
+    }
+
+    /* ── FURUFLÍS CARD ── */
+    .ff-card {
+      display: block;
+      text-decoration: none;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 3.5rem;
+      min-height: 220px;
+    }
+
+    .ff-card-bg {
+      position: absolute; inset: 0;
+      background-image: url('/hero-forsida.jpg');
+      background-size: cover;
+      background-position: center 35%;
+      transition: transform 0.4s ease;
+    }
+    .ff-card:hover .ff-card-bg { transform: scale(1.03); }
+
+    .ff-card-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(20,16,13,0.82) 0%, rgba(20,16,13,0.35) 100%);
+    }
+
+    .ff-card-body {
+      position: relative;
+      z-index: 1;
+      padding: 2rem 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 220px;
+    }
+
+    .ff-card img.ff-logo {
+      height: 36px;
+      filter: brightness(0) invert(1);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .ff-card p {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+      max-width: 480px;
+    }
+
+    /* ── ABOUT TEXT ── */
+    .page-intro {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 680px;
+      margin-bottom: 3rem;
+    }
+
+    .about-heading {
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 0;
+    }
+
+    .about-text {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 680px;
+      margin-bottom: 3rem;
+    }
+
+    /* ── LOCATION BLOCK ── */
+    .staff-location {
+      margin-bottom: 3.5rem;
+    }
+
+    .staff-location-name {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--mid);
+    }
+
+    .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .staff-card {
+      background: var(--white);
+      border: 1px solid var(--mid);
+      border-radius: 10px;
+      padding: 1.05rem 1.15rem;
+    }
+
+    .staff-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+      line-height: 1.3;
+    }
+
+    .staff-title {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .staff-contact { display: flex; flex-direction: column; gap: 0.3rem; margin-top: 0.7rem; }
+
+    .staff-contact a {
+      font-size: 0.8rem;
+      color: var(--blue);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .staff-contact a:hover { opacity: 0.75; }
+
+    .back-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .back-top:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1200px) {
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+    }
+    /* On desktop the drawer must never show, even if left open on mobile */
+    @media (min-width: 1201px) {
+      .nav-mobile { display: none !important; }
+    }
+    @media (max-width: 600px) {
+      .nav-top { padding: 0 4%; }
+      .nav-logo img { height: auto; max-width: 200px; }
+      .nav-right { gap: 0.85rem; }
+    }
+    @media (max-width: 380px) {
+      .nav-logo img { max-width: 150px; }
+      .nav-right { gap: 0.55rem; }
+    }
+  
+    /* Tungumála-fellilisti (IS / EN / PL, hvert á sínu máli) */
+    .lang-dd { position: relative; flex-shrink: 0; }
+    .lang-dd-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: transparent; border: 1px solid rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.9); font-family: inherit; font-size: 0.9rem;
+      font-weight: 600; letter-spacing: 0.01em; line-height: 1;
+      padding: 0.5rem 0.75rem; border-radius: 6px; cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .lang-dd-btn:hover { border-color: rgba(255,255,255,0.42); color: #fff; }
+    .lang-dd-caret { transition: transform 0.2s; margin-top: 1px; }
+    .lang-dd.open .lang-dd-caret { transform: rotate(180deg); }
+    .lang-dd-menu {
+      position: absolute; top: calc(100% + 8px); right: 0;
+      min-width: 100%; list-style: none; margin: 0; padding: 0.3rem;
+      background: #1c1713; border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 8px; box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+      display: none; z-index: 200;
+    }
+    .lang-dd.open .lang-dd-menu { display: block; }
+    .lang-dd-menu li { margin: 0; }
+    .lang-dd-menu .lang-opt {
+      display: block; width: 100%; text-align: left; white-space: nowrap;
+      background: transparent; border: none; color: rgba(255,255,255,0.75);
+      font-family: inherit; font-size: 0.92rem; font-weight: 600;
+      padding: 0.5rem 0.95rem; border-radius: 5px; cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-dd-menu .lang-opt:hover { background: rgba(255,255,255,0.08); color: #fff; }
+    .lang-dd-menu .lang-opt.active { color: #fff; background: rgba(91,141,239,0.22); }
+      .lang-dd-menu a.lang-opt { text-decoration: none; }
+  </style>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <script src="/analytics.js" defer></script>
+  <link rel="alternate" hreflang="is" href="https://fura.is/um-furu" />
+  <link rel="alternate" hreflang="en" href="https://fura.is/en/um-furu" />
+  <link rel="alternate" hreflang="pl" href="https://fura.is/pl/um-furu" />
+  <link rel="alternate" hreflang="x-default" href="https://fura.is/um-furu" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-top">
+    <a href="/pl/" class="nav-logo">
+      <img src="/fura-logo.svg" alt="Fura" />
+      
+    </a>
+    <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="/pl/#thjonusta" data-en="Services" data-pl="Usługi">Usługi</a></li>
+      <li><a href="/pl/#malmar" data-en="Metals" data-pl="Metale">Metale</a></li>
+      <li><a href="/pl/bilaforgun" data-en="Car recycling" data-pl="Złomowanie aut">Złomowanie aut</a></li>
+      <li><a href="/pl/um-furu" class="active" data-en="About Fura" data-pl="O Furze">O Furze</a></li>
+      <li><a href="/pl/furuflis" class="nav-ff"><img src="/furuflis-logo-color.png" alt="Furuflís" /></a></li>
+      <li><a href="/pl/#samband" class="nav-cta" data-en="Contact" data-pl="Kontakt">Kontakt</a></li>
+    </ul>
+            <div class="lang-dd" aria-label="Tungumál / Language">
+      <button type="button" class="lang-dd-btn" aria-haspopup="true" aria-expanded="false">
+        <span class="lang-dd-cur">Polski</span>
+        <svg class="lang-dd-caret" width="11" height="7" viewBox="0 0 11 7" fill="none" aria-hidden="true"><path d="M1 1l4.5 4.5L10 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <ul class="lang-dd-menu" role="menu">
+        <li><a class="lang-opt" href="/um-furu" hreflang="is" lang="is">Íslenska</a></li>
+        <li><a class="lang-opt" href="/en/um-furu" hreflang="en" lang="en">English</a></li>
+        <li><a class="lang-opt active" href="/pl/um-furu" hreflang="pl" lang="pl">Polski</a></li>
+      </ul>
+    </div>
+        <button class="nav-burger" id="burger" aria-label="Valmynd">
+      <span></span><span></span><span></span>
+    </button>
+    </div>
+  </div>
+  <div class="nav-mobile" id="mobile-menu">
+    <a href="/pl/#thjonusta" data-en="Services" data-pl="Usługi">Usługi</a>
+    <a href="/pl/#malmar" data-en="Metals" data-pl="Metale">Metale</a>
+    <a href="/pl/bilaforgun" data-en="Car recycling" data-pl="Złomowanie aut">Złomowanie aut</a>
+    <a href="/pl/um-furu" data-en="About Fura" data-pl="O Furze">O Furze</a>
+    <a href="/pl/furuflis" class="nav-ff-mobile"><img src="/furuflis-logo-color.png" alt="Furuflís" /></a>
+    <a href="/pl/#samband" class="nav-cta" data-en="Contact" data-pl="Kontakt">Kontakt</a>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="page">
+  <a href="/pl/#afhverju-fura" class="back-top" data-en="← Back" data-pl="← Powrót">← Powrót</a>
+  <h1 class="page-title" data-en="About Fura" data-pl="O Furze">O Furze</h1>
+  <div class="rule"></div>
+
+  <p class="page-intro" data-en="At Fura we want to make recycling simpler, more efficient and accessible for individuals and businesses. Our goal is to improve the environment and ease our customers' workload through personal service, quick responses and reliable solutions." data-pl="W Furze chcemy, aby recykling był prostszy, wydajniejszy i dostępny dla osób prywatnych i firm. Naszym celem jest poprawa stanu środowiska i odciążenie klientów dzięki osobistej obsłudze, szybkim odpowiedziom i niezawodnym rozwiązaniom.">W Furze chcemy, aby recykling był prostszy, wydajniejszy i dostępny dla osób prywatnych i firm. Naszym celem jest poprawa stanu środowiska i odciążenie klientów dzięki osobistej obsłudze, szybkim odpowiedziom i niezawodnym rozwiązaniom.</p>
+
+  <h2 class="about-heading" data-en="Over 40 years of experience" data-pl="Ponad 40 lat doświadczenia">Ponad 40 lat doświadczenia</h2>
+  <div class="rule"></div>
+  <p class="about-text" data-en="Fura has been operating since 1981, and has actively taken part in Icelandic recycling for more than four decades. From the very beginning, the company has evolved alongside growing demands for environmental protection and sustainability. The experience built up over the years enables us to provide safe, professional and efficient service." data-pl="Fura działa od 1981 roku i od ponad czterech dekad aktywnie uczestniczy w islandzkim recyklingu. Od samego początku firma rozwijała się wraz z rosnącymi wymaganiami w zakresie ochrony środowiska i zrównoważonego rozwoju. Doświadczenie zdobyte przez lata pozwala nam świadczyć bezpieczne, profesjonalne i wydajne usługi.">Fura działa od 1981 roku i od ponad czterech dekad aktywnie uczestniczy w islandzkim recyklingu. Od samego początku firma rozwijała się wraz z rosnącymi wymaganiami w zakresie ochrony środowiska i zrównoważonego rozwoju. Doświadczenie zdobyte przez lata pozwala nam świadczyć bezpieczne, profesjonalne i wydajne usługi.</p>
+
+  <h2 class="about-heading" data-en="What makes Fura different" data-pl="Co wyróżnia Furę">Co wyróżnia Furę</h2>
+  <div class="rule"></div>
+  <p class="about-text" data-en="What sets Fura apart is our experience, our people and our service. Over more than four decades, we have built up expertise and a skilled team that knows the material and the process inside out. We provide personal service and respond quickly. Our goal is always to keep things simple for the customer. We handle the project from start to finish, whether it involves delivering containers, collecting material or assisting with larger projects." data-pl="Furę wyróżnia nasze doświadczenie, nasi ludzie i nasza obsługa. Przez ponad cztery dekady zbudowaliśmy wiedzę i zgrany zespół, który zna materiał i proces od podszewki. Zapewniamy osobistą obsługę i szybko odpowiadamy. Naszym celem jest zawsze ułatwić sprawę klientowi. Zajmujemy się projektem od początku do końca — czy to dostarczenie kontenerów, odbiór materiału, czy pomoc przy większych projektach.">Furę wyróżnia nasze doświadczenie, nasi ludzie i nasza obsługa. Przez ponad cztery dekady zbudowaliśmy wiedzę i zgrany zespół, który zna materiał i proces od podszewki. Zapewniamy osobistą obsługę i szybko odpowiadamy. Naszym celem jest zawsze ułatwić sprawę klientowi. Zajmujemy się projektem od początku do końca — czy to dostarczenie kontenerów, odbiór materiału, czy pomoc przy większych projektach.</p>
+
+  <h2 class="about-heading" style="margin-top: 3rem;" data-en="Our team" data-pl="Nasz zespół">Nasz zespół</h2>
+  <div class="rule"></div>
+
+  <!-- Hafnarfjörður -->
+  <div class="staff-location">
+    <div class="staff-location-name">Hafnarfjörður</div>
+    <div class="staff-grid">
+
+      <div class="staff-card">
+        <div class="staff-name">Úlfar Haraldsson</div>
+        <div class="staff-title" data-en="Managing Director" data-pl="Dyrektor zarządzający">Dyrektor zarządzający</div>
+        <div class="staff-contact">
+          <a href="mailto:ulfar@fura.is">ulfar@fura.is</a>
+        </div>
+      </div>
+
+      <div class="staff-card">
+        <div class="staff-name">Jakob V. Arnarson</div>
+        <div class="staff-title" data-en="Station Manager" data-pl="Kierownik stacji">Kierownik stacji</div>
+        <div class="staff-contact">
+          <a href="mailto:jakob@fura.is">jakob@fura.is</a>
+        </div>
+      </div>
+
+      <div class="staff-card">
+        <div class="staff-name">Dagný M. Jónsdóttir</div>
+        <div class="staff-title" data-en="Office" data-pl="Biuro">Biuro</div>
+        <div class="staff-contact">
+          <a href="mailto:dagny@fura.is">dagny@fura.is</a>
+        </div>
+      </div>
+
+      <div class="staff-card">
+        <div class="staff-name">Stella Björk Guðmundsdóttir</div>
+        <div class="staff-title" data-en="Container handling &amp; reception" data-pl="Obsługa kontenerów i odbiór">Obsługa kontenerów i odbiór</div>
+        <div class="staff-contact">
+          <a href="mailto:afgreidsla@fura.is">afgreidsla@fura.is</a>
+        </div>
+      </div>
+
+      <div class="staff-card">
+        <div class="staff-name">Elvar K. Gapunay</div>
+        <div class="staff-title" data-en="Marketing &amp; Sales" data-pl="Marketing i sprzedaż">Marketing i sprzedaż</div>
+        <div class="staff-contact">
+          <a href="mailto:elvar@fura.is">elvar@fura.is</a>
+        </div>
+      </div>
+
+      <div class="staff-card">
+        <div class="staff-name">Gunnar Páll Pálsson</div>
+        <div class="staff-title" data-en="Project Manager" data-pl="Kierownik projektu">Kierownik projektu</div>
+        <div class="staff-contact">
+          <a href="mailto:gpp@fura.is">gpp@fura.is</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Akureyri -->
+  <div class="staff-location">
+    <div class="staff-location-name">Akureyri</div>
+    <div class="staff-grid">
+
+      <div class="staff-card">
+        <div class="staff-name">Gunnar Þ. Garðarsson</div>
+        <div class="staff-title" data-en="Regional Project Manager" data-pl="Regionalny kierownik projektu">Regionalny kierownik projektu</div>
+        <div class="staff-contact">
+          <a href="mailto:gunnar@fura.is">gunnar@fura.is</a>
+          <a href="tel:8944238">894 4238</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('mobile-menu');
+  burger.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+  // Close the mobile drawer if the window grows past the mobile breakpoint
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1100) menu.classList.remove('open');
+  });
+
+  // ── Apply saved language (the IS/EN toggle lives on the home page only) ──
+  (function () {
+    const dd = document.querySelector('.lang-dd');
+    if (!dd) return;
+    const btn = dd.querySelector('.lang-dd-btn');
+    function closeMenu() { dd.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+    btn.addEventListener('click', (e) => { e.stopPropagation(); const open = dd.classList.toggle('open'); btn.setAttribute('aria-expanded', open ? 'true' : 'false'); });
+    document.addEventListener('click', (e) => { if (!dd.contains(e.target)) closeMenu(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+
+  // ── Reveal section rules on scroll ──
+  (function () {
+    const rules = document.querySelectorAll(".rule");
+    if (!rules.length) return;
+    if (!("IntersectionObserver" in window)) {
+      rules.forEach(r => r.classList.add("in-view"));
+      return;
+    }
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("in-view");
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.6, rootMargin: "0px 0px -10% 0px" });
+    rules.forEach(r => obs.observe(r));
+  })();
+</script>
+
+</body>
+</html>

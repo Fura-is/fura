@@ -1793,12 +1793,17 @@
       .metal-image { min-height: 560px; }
       .coverage-map { max-width: 900px; }
     }
+      .lang-dd-menu a.lang-opt { text-decoration: none; }
   </style>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
   <link rel="preload" as="image" href="car-promo.png" fetchpriority="high">
   <link rel="preload" as="font" type="font/woff2" href="fonts/Onest-Variable.woff2" crossorigin>
   <script src="analytics.js" defer></script>
+  <link rel="alternate" hreflang="is" href="https://fura.is/" />
+  <link rel="alternate" hreflang="en" href="https://fura.is/en/" />
+  <link rel="alternate" hreflang="pl" href="https://fura.is/pl/" />
+  <link rel="alternate" hreflang="x-default" href="https://fura.is/" />
 </head>
 <body>
 
@@ -1817,15 +1822,15 @@
       <li><a href="/furuflis" class="nav-ff"><img src="furuflis-logo-color.png" alt="Furuflís" /></a></li>
       <li><a href="#samband" class="nav-cta" data-en="Contact" data-pl="Kontakt">Hafa samband</a></li>
     </ul>
-    <div class="lang-dd" aria-label="Tungumál / Language">
+            <div class="lang-dd" aria-label="Tungumál / Language">
       <button type="button" class="lang-dd-btn" aria-haspopup="true" aria-expanded="false">
         <span class="lang-dd-cur">Íslenska</span>
         <svg class="lang-dd-caret" width="11" height="7" viewBox="0 0 11 7" fill="none" aria-hidden="true"><path d="M1 1l4.5 4.5L10 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <ul class="lang-dd-menu" role="menu">
-        <li><button type="button" class="lang-opt" data-lang="is">Íslenska</button></li>
-        <li><button type="button" class="lang-opt" data-lang="en">English</button></li>
-        <li><button type="button" class="lang-opt" data-lang="pl">Polski</button></li>
+        <li><a class="lang-opt active" href="/" hreflang="is" lang="is">Íslenska</a></li>
+        <li><a class="lang-opt" href="/en/" hreflang="en" lang="en">English</a></li>
+        <li><a class="lang-opt" href="/pl/" hreflang="pl" lang="pl">Polski</a></li>
       </ul>
     </div>
     <button class="nav-burger" id="burger" aria-label="Valmynd">
@@ -2535,37 +2540,13 @@ c-38 -39 -41 -39 -90 -33 -28 4 -61 13 -73 21 -19 13 -25 12 -56 -7 -34 -21
 
   // ── Language switch: compact IS / EN toggle (IS default, EN optional) ──
   (function () {
-    const KEY = 'fura-lang';
-    const NAMES = { is: 'Íslenska', en: 'English', pl: 'Polski' };
     const dd = document.querySelector('.lang-dd');
     if (!dd) return;
     const btn = dd.querySelector('.lang-dd-btn');
-    const cur = dd.querySelector('.lang-dd-cur');
-    const opts = dd.querySelectorAll('.lang-opt');
-    function apply(lang) {
-      if (!NAMES[lang]) lang = 'is';
-      document.documentElement.lang = lang;
-      document.querySelectorAll('[data-en]').forEach(el => {
-        if (el.dataset.is === undefined) el.dataset.is = el.innerHTML;
-        const v = el.dataset[lang];                       // data-en / data-pl (data-is er upprunalegi textinn)
-        el.innerHTML = (lang !== 'is' && v !== undefined) ? v : el.dataset.is;
-      });
-      opts.forEach(o => o.classList.toggle('active', o.dataset.lang === lang));
-      if (cur) cur.textContent = NAMES[lang];
-      try { sessionStorage.setItem(KEY, lang); } catch (e) {}
-    }
-    function close() { dd.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const open = dd.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    opts.forEach(o => o.addEventListener('click', () => { apply(o.dataset.lang); close(); }));
-    document.addEventListener('click', (e) => { if (!dd.contains(e.target)) close(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
-    let saved = 'is';
-    try { saved = sessionStorage.getItem(KEY) || 'is'; } catch (e) {}
-    apply(saved);
+    function closeMenu() { dd.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+    btn.addEventListener('click', (e) => { e.stopPropagation(); const open = dd.classList.toggle('open'); btn.setAttribute('aria-expanded', open ? 'true' : 'false'); });
+    document.addEventListener('click', (e) => { if (!dd.contains(e.target)) closeMenu(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
   })();
 
   // Metals picker — chips (desktop) and accordion summaries (mobile) share state
