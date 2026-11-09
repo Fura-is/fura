@@ -406,6 +406,17 @@
     .lang-dd-menu .lang-opt:hover { background: rgba(255,255,255,0.08); color: #fff; }
     .lang-dd-menu .lang-opt.active { color: #fff; background: rgba(91,141,239,0.22); }
       .lang-dd-menu a.lang-opt { text-decoration: none; }
+  
+    /* ===== Hvítt nav + aðal-logo (FURA + MÁLMENDURVINNSLA) — Option A ===== */
+    nav { background:#ffffff; border-bottom:1px solid rgba(20,16,13,0.09); backdrop-filter:none; -webkit-backdrop-filter:none; }
+    .nav-logo img { height:54px; width:auto; filter:none; }
+    .nav-logo-sub { display:none; }   /* MÁLMENDURVINNSLA er hluti af logo-myndinni */
+    .nav-links a { color:#14100d; }
+    .nav-links a:hover, .nav-links a.active { color:#0036d4; }
+    .nav-links a.active::after { background:#0036d4; }
+    .lang-dd-btn { color:#14100d; border-color:rgba(20,16,13,0.22); }
+    .lang-dd-btn:hover { color:#0036d4; border-color:rgba(20,16,13,0.45); }
+    .nav-burger span { background:#14100d; }
   </style>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
@@ -423,7 +434,7 @@
 <nav>
   <div class="nav-top">
     <a href="/" class="nav-logo">
-      <img src="fura-logo.svg" alt="Fura" width="316" height="27" />
+      <img src="fura-logo-blue.png" alt="Fura Málmendurvinnsla" width="1652" height="708" />
     </a>
     <div class="nav-right">
     <ul class="nav-links">
@@ -434,7 +445,7 @@
       <li><a href="/furuflis" class="nav-ff"><img src="furuflis-logo-color.png" alt="Furuflís" /></a></li>
       <li><a href="/#samband" class="nav-cta" data-en="Contact" data-pl="Kontakt">Hafa samband</a></li>
     </ul>
-            <div class="lang-dd" aria-label="Tungumál / Language">
+                        <div class="lang-dd" aria-label="Tungumál / Language">
       <button type="button" class="lang-dd-btn" aria-haspopup="true" aria-expanded="false">
         <span class="lang-dd-cur">Íslenska</span>
         <svg class="lang-dd-caret" width="11" height="7" viewBox="0 0 11 7" fill="none" aria-hidden="true"><path d="M1 1l4.5 4.5L10 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>

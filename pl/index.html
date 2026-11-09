@@ -1794,6 +1794,17 @@
       .coverage-map { max-width: 900px; }
     }
       .lang-dd-menu a.lang-opt { text-decoration: none; }
+  
+    /* ===== Hvítt nav + aðal-logo (FURA + MÁLMENDURVINNSLA) — Option A ===== */
+    nav { background:#ffffff; border-bottom:1px solid rgba(20,16,13,0.09); backdrop-filter:none; -webkit-backdrop-filter:none; }
+    .nav-logo img { height:54px; width:auto; filter:none; }
+    .nav-logo-sub { display:none; }   /* MÁLMENDURVINNSLA er hluti af logo-myndinni */
+    .nav-links a { color:#14100d; }
+    .nav-links a:hover, .nav-links a.active { color:#0036d4; }
+    .nav-links a.active::after { background:#0036d4; }
+    .lang-dd-btn { color:#14100d; border-color:rgba(20,16,13,0.22); }
+    .lang-dd-btn:hover { color:#0036d4; border-color:rgba(20,16,13,0.45); }
+    .nav-burger span { background:#14100d; }
   </style>
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/favicon.png">
@@ -1811,7 +1822,7 @@
 <nav>
   <div class="nav-top">
     <a href="#" class="nav-logo">
-      <img src="/fura-logo.svg" alt="Fura" width="316" height="27" />
+      <img src="/fura-logo-blue.png" alt="Fura Málmendurvinnsla" width="1652" height="708" />
     </a>
     <div class="nav-right">
     <ul class="nav-links">
@@ -1822,7 +1833,7 @@
       <li><a href="/pl/furuflis" class="nav-ff"><img src="/furuflis-logo-color.png" alt="Furuflís" /></a></li>
       <li><a href="#samband" class="nav-cta" data-en="Contact" data-pl="Kontakt">Kontakt</a></li>
     </ul>
-                <div class="lang-dd" aria-label="Tungumál / Language">
+                        <div class="lang-dd" aria-label="Tungumál / Language">
       <button type="button" class="lang-dd-btn" aria-haspopup="true" aria-expanded="false">
         <span class="lang-dd-cur">Polski</span>
         <svg class="lang-dd-caret" width="11" height="7" viewBox="0 0 11 7" fill="none" aria-hidden="true"><path d="M1 1l4.5 4.5L10 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1879,7 +1890,7 @@
     text-decoration:none; font-size:clamp(1rem,4.6vw,1.2rem); padding:0.85em 1.6em; border-radius:999px;
     box-shadow:0 8px 22px rgba(0,0,0,0.28); animation:promobob 1.6s ease-in-out infinite; }
   .promo-btn:hover { background:#eef3ff; }
-  .promo-logo { grid-area:logo; height:clamp(28px,7vw,40px); width:auto; display:block; margin-top:0.6rem; }
+  .promo-logo { grid-area:logo; height:clamp(44px,11vw,64px); width:auto; display:block; margin-top:0.6rem; }
   @keyframes promobob {
     0%,55%,100% { transform:translateY(0); }
     15% { transform:translateY(-30%); }
@@ -1910,7 +1921,7 @@
     .promo-head { font-size:clamp(3.4rem,3.6vw,4.4rem); }
     .promo-sub  { font-size:1.55rem; }
     .promo-btn  { font-size:1.35rem; padding:0.9em 1.9em; }
-    .promo-logo { height:54px; margin-top:1.1rem; }
+    .promo-logo { height:76px; margin-top:1.1rem; }
   }
 </style>
 <section class="promo" id="top">
@@ -1919,7 +1930,7 @@
     <a class="promo-btn" href="/bilaforgun.html" data-en="Click here to see more" data-pl="Kliknij tutaj, aby zobaczyć więcej">Kliknij tutaj, aby zobaczyć więcej</a>
     <p class="promo-sub" data-en="Offer valid until the New Year" data-pl="Oferta ważna do Nowego Roku">Oferta ważna do Nowego Roku</p>
     <img class="promo-car" src="/car-promo.png" alt="" width="693" height="420" fetchpriority="high">
-    <img class="promo-logo" src="/fura-wordmark.png" alt="Fura" width="246" height="72">
+    <img class="promo-logo" src="/fura-logo-white.png" alt="Fura Málmendurvinnsla" width="1652" height="708">
   </div>
 </section>
 <!-- ===== END TILBOÐS-HERO ===== -->
