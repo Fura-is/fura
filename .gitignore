@@ -1,2 +1,43 @@
 .DS_Store
 .claude/
+
+# Cloudflare wrangler local cache — must NEVER be committed:
+# it caches an account id and breaks Workers Builds in CI (account mismatch)
+.wrangler/
+
+# Loose working files that live in this folder but are NOT part of the website.
+# Keeps `git add -A` from sweeping personal/marketing files onto the public site.
+*.xlsx
+*.command
+*.psd
+
+# Marketing / source images kept in this folder but not used by the site
+Fura - main logo
+Fura - mainlogo.png
+Fura logo update .png
+Fura logo.is update.png
+Fura Icelandic Car Recycling Advertisement.png
+Fura-forsidumynd-facebook.png
+Fura-profilmynd-F.png
+Fura-profilmynd-facebook.png
+Fura-profilmynd-pillustór.png
+Furuflis-logo-gull.png
+Furuflis-logo-marglit-v2.png
+Furuflís - nýtt logo.png
+FURA-iPhone-sticker.png
+ChatGPT Image 9 Nov 2026, 12_13_03.png
+Einhver mynd fyrir Kobba .png
+Kobbamynd skemmtilegt.png
+Mynd fyrir hann kobba.png
+bakrunnur auglýsing.png
+nýjasta myndin .png
+fura-1080x1080-2026-09-14-08-12.png
+fura-ig-feed-40k.png
+fura-ig-story-40k.png
+fura-profile-blatt.png
+fura-profile-full.png
+fura-profile-hvitt.png
+fura-sticker.png
+fura-sticker-badge.png
+fura-sticker-hvitt.png
+fura-sticker-pilla.png
