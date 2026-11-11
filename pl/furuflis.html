@@ -533,9 +533,11 @@
     .lang-dd-btn:hover { color:#0036d4; border-color:rgba(20,16,13,0.45); }
     .nav-burger span { background:#14100d; }
   
-    /* Stór skrifstofuskjár undirsíðu */
-    @media (min-width:1700px){ html{font-size:112.5%;} .content{max-width:1160px;} }
-    @media (min-width:2300px){ html{font-size:125%;} .content{max-width:1360px;} }
+        /* Stór skrifstofuskjár undirsíðu — stigvaxandi stækkun */
+    @media (min-width:1000px){ html{font-size:106.25%;} .content{max-width:1000px;} }
+    @media (min-width:1360px){ html{font-size:112.5%;}  .content{max-width:1160px;} }
+    @media (min-width:1760px){ html{font-size:125%;}    .content{max-width:1340px;} }
+    @media (min-width:2300px){ html{font-size:137.5%;}  .content{max-width:1500px;} }
   </style>
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/favicon.png">
@@ -563,7 +565,7 @@
       <li><a href="/pl/furuflis" class="nav-ff active"><img src="/furuflis-logo-dark.png" alt="Furuflís" /></a></li>
       <li><a href="/pl/#samband" class="nav-cta" data-en="Contact" data-pl="Kontakt">Kontakt</a></li>
     </ul>
-                                    <div class="lang-dd" aria-label="Tungumál / Language">
+                                            <div class="lang-dd" aria-label="Tungumál / Language">
       <button type="button" class="lang-dd-btn" aria-haspopup="true" aria-expanded="false">
         <span class="lang-dd-cur">Polski</span>
         <svg class="lang-dd-caret" width="11" height="7" viewBox="0 0 11 7" fill="none" aria-hidden="true"><path d="M1 1l4.5 4.5L10 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
